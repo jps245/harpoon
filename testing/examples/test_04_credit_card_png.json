@@ -1,0 +1,58 @@
+{
+    "summary": "This is a credit card agreement featuring a predatory penalty interest rate and a dangerous deferred interest trap. The most critical issues are the 39.99% penalty APR and the retroactive interest charges, making this a high-risk agreement that requires immediate caution.",
+    "document_type": "Credit Card Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "item": "Penalty APR",
+            "why_it_is_harmful": "If you are 60 days late on a payment, your interest rate jumps to 39.99%. This is far above the 36% benchmark considered predatory by consumer advocates and makes it nearly impossible to pay down the balance.",
+            "impact": "Interest rate increases to 39.99% on all existing and future balances.",
+            "category": "Major"
+        },
+        {
+            "item": "Deferred Interest Promotions",
+            "why_it_is_harmful": "This is a 'trap' where if you do not pay the full balance by the end of the promotion, the bank charges you interest on the original purchase amount starting from the day you bought the item, not just on what is left.",
+            "impact": "Approximately $449.85 in retroactive interest charges on a $1,500 purchase.",
+            "category": "Medium"
+        },
+        {
+            "item": "Mandatory Arbitration and Class Action Waiver",
+            "why_it_is_harmful": "This forces you to settle disputes through a private arbitrator chosen by the company rather than in a public court, and it prevents you from joining a class action lawsuit with other affected customers.",
+            "impact": "Loss of legal right to a jury trial and collective legal action.",
+            "category": "Medium"
+        },
+        {
+            "item": "Cash Advance APR",
+            "why_it_is_harmful": "The interest rate for taking cash out (34.99%) is extremely high and starts charging you immediately with no grace period, meaning you pay interest from the second you have the cash.",
+            "impact": "34.99% annual interest charged daily from the date of the advance.",
+            "category": "Medium"
+        },
+        {
+            "item": "Paper Statement Fee",
+            "why_it_is_harmful": "This is a nuisance fee that charges you simply for receiving your bill in the mail.",
+            "impact": "$3.99 per month ($47.88 per year).",
+            "category": "Minor"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA), you have the right to clear disclosures of the APR and total cost of credit. Under the Fair Credit Billing Act (FCBA), you have the right to dispute unfair or inaccurate charges on your statement. Under the Equal Credit Opportunity Act (ECOA), you have the right to be treated fairly without discrimination based on race, religion, or national origin.",
+    "action_steps": [
+        {
+            "step": 1,
+            "description": "Send a written notice to the 'Arbitration Opt-Out' address (P.O. Box 9000, Wilmington, DE 19800) within 60 days of account opening to keep your right to sue in court."
+        },
+        {
+            "step": 2,
+            "description": "Enroll in e-statements immediately to stop the $3.99 monthly paper statement fee."
+        },
+        {
+            "step": 3,
+            "description": "Set up automatic minimum payments to ensure you are never 60 days late, which would trigger the predatory 39.99% Penalty APR."
+        },
+        {
+            "step": 4,
+            "description": "Avoid using 'Deferred Interest' promotions unless you are 100% certain you can pay the entire balance before the expiration date to avoid retroactive interest charges."
+        }
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "The agreement contains a Penalty APR exceeding 36% and a retroactive interest trap, both of which are predatory terms that can lead to a cycle of debt."
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Credit Card Agreement</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; background: #ddd; padding: 32px; color: #111; }
+  .page { background: #fff; width: 760px; margin: 0 auto; padding: 44px 52px; border: 1px solid #bbb; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 3px solid #003087; padding-bottom: 14px; }
+  .brand { font-size: 20px; font-weight: bold; color: #003087; letter-spacing: -0.5px; }
+  .brand span { color: #cc0000; }
+  .card-label { font-size: 11px; font-weight: bold; color: #555; text-align: right; }
+  .schumer-box { border: 2px solid #111; margin-bottom: 20px; }
+  .schumer-header { background: #111; color: #fff; font-size: 10px; font-weight: bold; padding: 6px 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .schumer-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .schumer-cell { padding: 10px 12px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc; }
+  .schumer-cell:nth-child(even) { border-right: none; }
+  .schumer-cell:last-child, .schumer-cell:nth-last-child(2) { border-bottom: none; }
+  .s-label { font-size: 8.5px; font-weight: bold; text-transform: uppercase; color: #555; margin-bottom: 3px; }
+  .s-val { font-size: 12px; font-weight: bold; color: #003087; }
+  .s-sub { font-size: 8.5px; color: #666; margin-top: 2px; line-height: 1.4; }
+  .s-val.red { color: #cc0000; }
+  .section { margin-bottom: 16px; }
+  .section h4 { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 8px; color: #003087; }
+  p { margin-bottom: 10px; line-height: 1.6; }
+  .fine-print { font-size: 8.5px; color: #555; line-height: 1.5; }
+  .callout { background: #fff8f8; border: 1px solid #cc0000; padding: 10px 14px; margin: 12px 0; font-size: 9.5px; line-height: 1.5; }
+  .callout strong { color: #cc0000; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 12px; }
+  th { background: #f0f4f9; padding: 6px 8px; text-align: left; border: 1px solid #ccc; font-size: 8.5px; text-transform: uppercase; }
+  td { padding: 6px 8px; border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="brand">Premier<span>Choice</span> Bank</div>
+      <div style="font-size:9px; color:#666; margin-top:3px;">Member FDIC · Equal Housing Lender</div>
+    </div>
+    <div class="card-label">
+      CREDIT CARD AGREEMENT<br>
+      <span style="color:#003087">Premier Rewards Platinum Card</span><br>
+      Account: XXXX-XXXX-XXXX-8812
+    </div>
+  </div>
+
+  <!-- Schumer Box -->
+  <div class="schumer-box">
+    <div class="schumer-header">Interest Rates and Interest Charges</div>
+    <div class="schumer-grid">
+      <div class="schumer-cell">
+        <div class="s-label">Purchase APR — Introductory</div>
+        <div class="s-val">0%</div>
+        <div class="s-sub">For 18 months from account opening. After that, your APR will be 29.99% variable.</div>
+      </div>
+      <div class="schumer-cell">
+        <div class="s-label">Purchase APR — After Intro Period</div>
+        <div class="s-val red">29.99%</div>
+        <div class="s-sub">Variable rate based on Prime Rate + 21.74%. Current Prime: 8.25%.</div>
+      </div>
+      <div class="schumer-cell">
+        <div class="s-label">Cash Advance APR</div>
+        <div class="s-val red">34.99%</div>
+        <div class="s-sub">Begins accruing immediately. No grace period. No introductory rate applies.</div>
+      </div>
+      <div class="schumer-cell">
+        <div class="s-label">Penalty APR</div>
+        <div class="s-val red">39.99%</div>
+        <div class="s-sub">Applied if payment is 60+ days late. May apply indefinitely to existing balances.</div>
+      </div>
+      <div class="schumer-cell" style="grid-column: span 2;">
+        <div class="s-label">Minimum Interest Charge</div>
+        <div class="s-sub">If charged interest, minimum charge is $2.00. We will not charge interest on purchases if you pay full balance by due date each month — <strong>except on deferred interest balances (see below)</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h4>Fees</h4>
+    <table>
+      <tr><th>Fee Type</th><th>Amount</th><th>Notes</th></tr>
+      <tr><td>Annual Fee</td><td>$0 — Year 1 only</td><td>$149.00 beginning Month 13</td></tr>
+      <tr><td>Late Payment Fee</td><td>Up to $40.00</td><td>Charged if minimum payment not received by due date</td></tr>
+      <tr><td>Cash Advance Fee</td><td>5% (min $15)</td><td>Per transaction; no cap</td></tr>
+      <tr><td>Balance Transfer Fee</td><td>4% (min $10)</td><td>Per transfer; no cap</td></tr>
+      <tr><td>Foreign Transaction Fee</td><td>3%</td><td>Of each transaction in a foreign currency or processed outside US</td></tr>
+      <tr><td>Returned Payment Fee</td><td>$40.00</td><td>Per occurrence</td></tr>
+      <tr><td>Paper Statement Fee</td><td>$3.99/month</td><td>Waived if enrolled in e-statements</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h4>Deferred Interest Promotions — IMPORTANT</h4>
+    <p>From time to time, Premier Choice Bank may offer special deferred interest promotions on qualifying purchases (e.g., "No interest if paid in full within 12 months"). These offers differ from our standard 0% APR introductory offer in a critical way:</p>
+    <div class="callout">
+      <strong>DEFERRED INTEREST WARNING:</strong> Under a deferred interest promotion, if you do not pay the <em>entire</em> promotional balance in full before the promotion expires, you will be charged interest on the <strong>original purchase amount dating back to the date of purchase</strong> — not just the remaining balance. At 29.99% APR, a $1,500 purchase not fully paid after 12 months results in approximately <strong>$449.85 in retroactive interest charges</strong> added to your balance in a single billing cycle.
+    </div>
+    <p class="fine-print">Deferred interest promotions are separate from the standard 18-month 0% introductory APR. Minimum payments during a deferred interest promotion are calculated on your total account balance and may not be sufficient to pay off the promotional balance before the promotion expires. We do not guarantee that minimum payments will retire the promotional balance within the promotional period.</p>
+  </div>
+
+  <div class="section">
+    <h4>Penalty APR Trigger</h4>
+    <p class="fine-print">The Penalty APR of 39.99% will be applied to your account if: (1) you make a payment that is 60 or more days late; (2) a payment is returned for any reason. Once triggered, the Penalty APR may be applied to all existing balances and future transactions. We will review your account after 6 months of on-time minimum payments to determine whether to restore the standard APR. There is no guarantee of APR restoration.</p>
+  </div>
+
+  <div class="section">
+    <h4>Arbitration &amp; Waiver of Rights</h4>
+    <p class="fine-print">PLEASE READ THIS CAREFULLY. IT AFFECTS YOUR LEGAL RIGHTS. Either you or we may elect that any dispute between us be resolved by binding arbitration. Class action waiver: If arbitration is elected, neither you nor we will have the right to litigate that dispute in court or to have a jury trial on that dispute, nor will you or we be able to participate in a class action lawsuit. You have 60 days from account opening to opt out of this arbitration provision by sending a written notice to: Premier Choice Bank, Arbitration Opt-Out, P.O. Box 9000, Wilmington, DE 19800.</p>
+  </div>
+</div>
+</body>
+</html>

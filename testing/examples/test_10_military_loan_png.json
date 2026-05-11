@@ -1,0 +1,46 @@
+{
+    "summary": "This is a consumer loan agreement with predatory terms, most notably an interest rate that appears to illegally exceed the limit set for active-duty military members. This document is likely not legally sound and the borrower should immediately consult a JAG officer before signing.",
+    "document_type": "Consumer Loan Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Annual Percentage Rate (APR) of 89.90%",
+            "why": "This interest rate is extremely high and predatory, meaning the borrower will pay back significantly more than they borrowed.",
+            "impact": "The borrower is paying $1,348.50 in finance charges on a $3,000 loan over just 18 months.",
+            "category": "Major"
+        },
+        {
+            "what": "Violation of the Military Lending Act (MLA)",
+            "why": "The borrower is listed as active-duty Army. Federal law caps the interest rate for active-duty service members at 36%. The lender claims an exemption, but the MLA generally applies to most consumer loans regardless of the principal amount or term. This appears to be an attempt to bypass federal protections.",
+            "impact": "The borrower is being charged 53.9% more in interest than the legal maximum allowed for military members.",
+            "category": "Illegal"
+        },
+        {
+            "what": "Prepayment Penalty (2% of remaining balance)",
+            "why": "This is a fee that punishes the borrower for paying off their loan early to save on interest.",
+            "impact": "A 2% charge on whatever balance is left if the loan is paid off before the 18-month term ends.",
+            "category": "Medium"
+        },
+        {
+            "what": "Mandatory Arbitration Clause",
+            "why": "This forces the borrower to give up their right to a jury trial or to join a class-action lawsuit if the lender commits fraud or breaks the law.",
+            "impact": "Loss of access to the public court system for resolving disputes.",
+            "category": "Medium"
+        },
+        {
+            "what": "Origination Fee",
+            "why": "A $150 fee is taken out of the loan before the borrower even receives the money, meaning the borrower pays interest on money they never actually got to use.",
+            "impact": "$150.00 reduction in the actual cash received.",
+            "category": "Minor"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA) 15 U.S.C. \u00a7 1638, you have the right to a clear and accurate disclosure of the APR and total cost of credit. Most importantly, under the Military Lending Act (MLA) 10 U.S.C. \u00a7 987, active-duty service members are protected from interest rates exceeding 36% (the Military Annual Percentage Rate or MAPR) on most consumer loans.",
+    "action_steps": [
+        "DO NOT sign this agreement or authorize any payment allotments.",
+        "Immediately contact your base JAG (Judge Advocate General) office or military legal assistance for a free review of this contract to confirm the MLA violation.",
+        "Explore safer borrowing options, such as a military credit union or Army Emergency Relief (AER), which offer far lower rates.",
+        "File a complaint with the Consumer Financial Protection Bureau (CFPB) regarding the lender's attempt to charge an active-duty member 89.90% APR."
+    ],
+    "urgency": "HIGH",
+    "caveat": "Any red flag categorized as Illegal should be researched further with a qualified legal professional, as laws vary by state and specific individual situations."
+}

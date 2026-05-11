@@ -1,0 +1,46 @@
+{
+    "summary": "This is a vehicle title loan agreement with an extremely high interest rate and predatory terms. The lender has illegally omitted required fees from the federal disclosure box, and the loan puts the borrower at high risk of losing their car. Do not sign this document and look for alternative lending options immediately.",
+    "document_type": "Vehicle Title Loan Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "item": "Annual Percentage Rate (APR) of 214.50%",
+            "why_it_is_harmful": "This interest rate is extremely predatory. It means the cost of borrowing is over double the amount of the loan itself on an annual basis, making it nearly impossible for most people to pay back.",
+            "impact": "The interest alone costs $262.50 every 30 days on a $1,500 loan.",
+            "category": "Major"
+        },
+        {
+            "item": "Omission of fees from TILA Disclosure",
+            "why_it_is_harmful": "The Truth in Lending Act (TILA) requires lenders to disclose the total cost of credit. This document explicitly admits that $125.00 in fees (GPS and lien fees) were left out of the federal disclosure box to make the loan look cheaper than it is.",
+            "impact": "$125.00 in hidden costs not included in the finance charge calculation.",
+            "category": "Illegal"
+        },
+        {
+            "item": "Vehicle Title as Collateral",
+            "why_it_is_harmful": "By giving up the title to your car, you give the lender the right to take your vehicle (repossession) without prior notice if you miss a payment, which could leave you without transportation to get to work.",
+            "impact": "Potential loss of a vehicle valued at $9,200.00 for a $1,500 loan.",
+            "category": "Major"
+        },
+        {
+            "item": "Rollover/Renewal Terms",
+            "why_it_is_harmful": "The agreement allows you to 'renew' the loan by paying only the interest. This is a 'debt trap' because you never pay down the original $1,500 you borrowed, and the interest costs keep piling up forever.",
+            "impact": "As stated in the document's own example, renewing 6 times results in paying $1,575 in interest alone, more than the original loan amount.",
+            "category": "Major"
+        },
+        {
+            "item": "Remote Ignition Disable Device",
+            "why_it_is_harmful": "The lender installs a GPS device that allows them to remotely shut off your car's engine, which is a dangerous and aggressive way to force payment.",
+            "impact": "Immediate loss of vehicle use via remote disablement.",
+            "category": "Major"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA, 15 U.S.C. \u00a7 1638), you have the right to a clear and accurate disclosure of the Annual Percentage Rate (APR), the total finance charge, and the total amount you will owe. The lender cannot hide mandatory fees from these federal disclosures.",
+    "action_steps": [
+        "Do not sign this agreement or provide your vehicle title to the lender.",
+        "Visit a local credit union or community bank to ask about 'Payday Alternative Loans' (PALs) or small personal loans, which have significantly lower interest rates.",
+        "Contact your state's Attorney General's office or the Consumer Financial Protection Bureau (CFPB) to report the illegal omission of fees from the TILA disclosure.",
+        "Research your state's usury laws (laws that set a maximum legal interest rate) to see if a 214.50% APR is even legal in your state."
+    ],
+    "urgency": "HIGH",
+    "caveat": "The 'Illegal' categorization regarding the TILA disclosure should be researched further by a legal professional, as specific state laws and exemptions can vary."
+}

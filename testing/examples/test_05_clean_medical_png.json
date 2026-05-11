@@ -1,0 +1,26 @@
+{
+    "summary": "This is a medical bill for an office visit and lab work. The only issue found is a minor charge for basic medical supplies, but the document otherwise appears legally sound. The most important next step is to verify that these costs align with your insurance plan's co-pay and deductible rules.",
+    "document_type": "Medical Bill",
+    "category": "MEDICAL_BILL",
+    "red_flags": [
+        {
+            "what": "Charges for basic surgical supplies (gloves and gauze)",
+            "why": "Medical providers often include the cost of basic supplies like gloves and gauze in the overall cost of the procedure or visit. Charging for them separately can be a way to inflate the total bill.",
+            "impact": "$12.00",
+            "category": "Minor"
+        }
+    ],
+    "your_rights": "Under the No Surprises Act (42 U.S.C. \u00a7 300gg-111), you are protected from unexpected bills from out-of-network providers at in-network facilities. You also have the right to request a fully itemized bill to ensure you are not being charged for services you did not receive.",
+    "action_steps": [
+        "Review your medical records to confirm that the office visit and all three lab-related services (CBC, Metabolic Panel, and blood draw) actually took place on April 10, 2026.",
+        "Call the billing department at (217) 555-0220 ext. 2 and ask them to remove the $12.00 charge for gloves and gauze, as these are standard supplies that should be covered by the visit fee.",
+        "Log into your Aetna HMO member portal to verify that the 'Your Share' amounts ($88.00 total) match your specific plan's co-payment or deductible requirements."
+    ],
+    "urgency": "LOW",
+    "red_flag_severity_definitions": {
+        "Minor": "Hidden fees or fine print terms that might surprise the user but cause limited financial harm.",
+        "Medium": "Terms or errors that could lead to meaningful financial stress. May not be predatory but the consumer needs to be aware.",
+        "Major": "Predatory terms. Should not be accepted without careful consideration; may also be illegal.",
+        "Illegal": "Appears to violate a specific federal or state consumer protection law."
+    }
+}

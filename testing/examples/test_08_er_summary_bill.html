@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ER Summary Bill</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 10.5px; background: #ddd; padding: 32px; color: #111; }
+  .page { background: #fff; width: 740px; margin: 0 auto; padding: 44px 50px; border: 1px solid #bbb; }
+  .header { display: flex; justify-content: space-between; border-bottom: 3px solid #6b2d8b; padding-bottom: 14px; margin-bottom: 20px; }
+  .hosp-name { font-size: 17px; font-weight: bold; color: #6b2d8b; }
+  .hosp-sub { font-size: 9px; color: #666; margin-top: 3px; }
+  .stmt { text-align: right; font-size: 9.5px; color: #555; }
+  .patient-box { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid #ccc; margin-bottom: 18px; }
+  .pc { padding: 9px 11px; border-right: 1px solid #ccc; }
+  .pc:last-child { border-right: none; }
+  .pl { font-size: 8px; text-transform: uppercase; color: #888; font-weight: bold; margin-bottom: 2px; }
+  .pv { font-size: 10.5px; }
+  .sec-head { background: #6b2d8b; color: #fff; font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 10.5px; }
+  th { background: #f3eef8; padding: 6px 8px; text-align: left; border-bottom: 1px solid #ccc; font-size: 8.5px; text-transform: uppercase; color: #555; }
+  td { padding: 7px 8px; border-bottom: 1px solid #eee; }
+  td.amt { text-align: right; font-family: monospace; }
+  .no-code { color: #888; font-style: italic; }
+  .summary { display: flex; justify-content: flex-end; }
+  .sum-box { width: 260px; border: 1px solid #ccc; font-size: 10.5px; }
+  .sum-line { display: flex; justify-content: space-between; padding: 6px 10px; border-bottom: 1px solid #eee; }
+  .sum-line.total { background: #6b2d8b; color: #fff; font-weight: bold; }
+  .sum-line .v { font-family: monospace; }
+  .note-box { border: 1px solid #ccc; padding: 12px 14px; margin-top: 18px; font-size: 9px; color: #555; line-height: 1.6; }
+  .due-bar { background: #6b2d8b; color: #fff; text-align: center; padding: 14px; margin-bottom: 18px; }
+  .due-bar .dl { font-size: 9px; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; }
+  .due-bar .da { font-size: 26px; font-weight: bold; font-family: monospace; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="hosp-name">St. Augustine Medical Center</div>
+      <div class="hosp-sub">Emergency Services · 900 Hospital Drive · Springfield, IL 62702 · (217) 555-0300</div>
+      <div class="hosp-sub">NPI: 7788990011 · Tax ID: 37-0012345</div>
+    </div>
+    <div class="stmt">
+      Patient Statement<br>
+      Date: April 30, 2026<br>
+      Acct: SAMC-2026-ER-7741
+    </div>
+  </div>
+
+  <div class="patient-box">
+    <div class="pc"><div class="pl">Patient</div><div class="pv">Diana R. Okafor</div></div>
+    <div class="pc"><div class="pl">Date of Service</div><div class="pv">April 8, 2026</div></div>
+    <div class="pc"><div class="pl">Dept</div><div class="pv">Emergency Room</div></div>
+    <div class="pc"><div class="pl">Insurance</div><div class="pv">Uninsured / Self-Pay</div></div>
+    <div class="pc"><div class="pl">Provider</div><div class="pv">Various</div></div>
+    <div class="pc"><div class="pl">Admit Type</div><div class="pv">Emergency</div></div>
+  </div>
+
+  <div class="sec-head">Summary of Charges</div>
+  <table>
+    <thead>
+      <tr><th>Service Category</th><th>Code</th><th style="text-align:right">Charge</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Emergency Room Visit</td>
+        <td class="no-code">— (see itemized bill for code)</td>
+        <td class="amt">$2,800.00</td>
+      </tr>
+      <tr>
+        <td>Laboratory Services</td>
+        <td class="no-code">— (see itemized bill for code)</td>
+        <td class="amt">$1,240.00</td>
+      </tr>
+      <tr>
+        <td>Radiology / Imaging</td>
+        <td class="no-code">— (see itemized bill for code)</td>
+        <td class="amt">$3,100.00</td>
+      </tr>
+      <tr>
+        <td>Pharmacy — Ibuprofen 400mg (qty: 2 tablets, oral)</td>
+        <td class="no-code">NDC 00536-3603-01</td>
+        <td class="amt">$74.00</td>
+      </tr>
+      <tr>
+        <td>Pharmacy — Normal Saline IV 0.9% 1000mL bag</td>
+        <td class="no-code">NDC 00338-0049-04</td>
+        <td class="amt">$380.00</td>
+      </tr>
+      <tr>
+        <td>Pharmacy — Acetaminophen 500mg (qty: 2 tablets, oral)</td>
+        <td class="no-code">NDC 50580-449-03</td>
+        <td class="amt">$52.00</td>
+      </tr>
+      <tr>
+        <td>Medical/Surgical Supplies</td>
+        <td class="no-code">— (see itemized bill for code)</td>
+        <td class="amt">$890.00</td>
+      </tr>
+      <tr>
+        <td>Facility Fee</td>
+        <td class="no-code">— (see itemized bill for code)</td>
+        <td class="amt">$420.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="due-bar">
+    <div class="dl">Amount Due</div>
+    <div class="da">$8,956.00</div>
+  </div>
+
+  <div class="summary">
+    <div class="sum-box">
+      <div class="sum-line"><span>Total Billed</span><span class="v">$8,956.00</span></div>
+      <div class="sum-line"><span>Insurance Payments</span><span class="v">$0.00</span></div>
+      <div class="sum-line"><span>Self-Pay Discount (25%)</span><span class="v">– $2,239.00</span></div>
+      <div class="sum-line total"><span>Balance Due</span><span class="v">$6,717.00</span></div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>Need help paying this bill?</strong> St. Augustine Medical Center offers a Charity Care program for patients who qualify based on income. Ask to speak with a Financial Counselor or call (217) 555-0301.<br><br>
+    <strong>Itemized bill:</strong> This is a summary statement. To request a full itemized bill with procedure codes, call Patient Financial Services at (217) 555-0300 ext. 4, or submit a written request. We are required to provide your itemized bill within 30 days of your request.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "summary": "This is a debt collection notice for $834.00. While the letter includes the legally required disclosures, the future date (2026) is a red flag that suggests a potential scam or serious error. The document otherwise appears legally sound, and the most important next step is to send a written request for proof of the debt within 30 days.",
+    "document_type": "Debt Collection Letter",
+    "category": "DEBT_COLLECTION",
+    "red_flags": [
+        {
+            "item": "Future Date",
+            "why": "The letter is dated April 22, 2026, which is in the future. Such a significant clerical error is often a sign of a fraudulent operation or a scam using a generic template, which makes the legitimacy of the entire claim suspicious.",
+            "impact": "Potential loss of $834.00 if the consumer pays a fraudulent debt.",
+            "category": "Medium"
+        }
+    ],
+    "your_rights": "Under the Fair Debt Collection Practices Act (FDCPA), you have the right to dispute this debt in writing within 30 days of receiving this notice. You are entitled to 'verification' of the debt, which means the collector must provide proof that you actually owe the money and that the amount listed is accurate. You also have the right to request the name and address of the original creditor.",
+    "action_steps": [
+        "Send a written 'Debt Validation Letter'\u2014a request for proof that you owe this money\u2014to Midland Credit Solutions, LLC. Use certified mail with a return receipt requested so you have proof they received it.",
+        "Do not make any payments or admit that you owe the debt over the phone until you receive written verification and proof that the debt is valid.",
+        "Check your own personal financial records for any account with 'Midwest Furniture & Appliance Co.' to see if the account number XXXX-7714 matches any of your old records."
+    ],
+    "urgency": "LOW",
+    "your_rights_citation": "FDCPA 15 U.S.C. \u00a7 1692g"
+}

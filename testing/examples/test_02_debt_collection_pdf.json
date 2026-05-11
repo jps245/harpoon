@@ -1,0 +1,43 @@
+{
+    "summary": "This is a debt collection letter that contains several illegal threats, including arrest and unauthorized contact with an employer. The document is not legally sound and is designed to intimidate the consumer; the most important next step is to send a written dispute letter to verify the debt.",
+    "document_type": "Debt Collection Letter",
+    "category": "DEBT_COLLECTION",
+    "red_flags": [
+        {
+            "item": "Threat of arrest",
+            "harm": "It is illegal for a debt collector to threaten you with jail or arrest to force payment. This is a scare tactic used to intimidate people into paying debts they may not even owe.",
+            "impact": "N/A",
+            "category": "Illegal",
+            "detail": "Violates FDCPA 15 U.S.C. \u00a7 1692e(2)(A) / \u00a7 807(4). Note: This should be researched further as laws vary by state and situation."
+        },
+        {
+            "item": "Threat of immediate wage garnishment",
+            "harm": "Debt collectors cannot garnish (take money from) your wages without first suing you in court and winning a legal judgment. Claiming it is 'immediate' is a false claim intended to cause panic.",
+            "impact": "N/A",
+            "category": "Illegal",
+            "detail": "Violates FDCPA 15 U.S.C. \u00a7 1692e(5) / \u00a7 807(5). Note: This should be researched further as laws vary by state and situation."
+        },
+        {
+            "item": "Contacting employer",
+            "harm": "Debt collectors are prohibited from telling your employer or other third parties about your debt without your permission. Claiming they have already contacted your employer is a severe violation of privacy and law.",
+            "impact": "N/A",
+            "category": "Illegal",
+            "detail": "Violates FDCPA 15 U.S.C. \u00a7 1692c(b) / \u00a7 805(b). Note: This should be researched further as laws vary by state and situation."
+        },
+        {
+            "item": "Additional fees ($300 processing fee and $200 re-activation fee)",
+            "harm": "Adding unauthorized fees increases the total amount you owe. Collectors cannot add their own fees unless the original contract you signed specifically allowed them to do so.",
+            "impact": "$500.00",
+            "category": "Medium",
+            "detail": "May violate FDCPA \u00a7 808(1) if these fees were not authorized by the original agreement."
+        }
+    ],
+    "your_rights": "Under the Fair Debt Collection Practices Act (FDCPA), you have the right to dispute this debt in writing within 30 days of receiving the notice. You have the right to request verification of the debt, which means the collector must prove you owe the money and provide the name of the original creditor. You are legally protected from harassment, threats of arrest, and the disclosure of your debt to third parties like your employer.",
+    "action_steps": [
+        "Do not pay any money or provide credit card/bank information over the phone right now.",
+        "Send a formal 'Debt Validation Letter' via certified mail with a return receipt requested within 30 days. This requires the company to legally prove the debt is yours and the amount is correct.",
+        "Save a copy of the letter you send and the postal receipt as evidence.",
+        "Report the illegal threats of arrest and the unauthorized contact with your employer to the Consumer Financial Protection Bureau (CFPB) and your state's Attorney General."
+    ],
+    "urgency": "HIGH"
+}

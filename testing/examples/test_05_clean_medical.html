@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medical Bill - Clean Example</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; font-size: 10.5px; background: #e5e5e5; padding: 32px; color: #111; }
+  .page { background: #fff; width: 740px; margin: 0 auto; padding: 44px 50px; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #2e6b3e; padding-bottom: 14px; margin-bottom: 20px; }
+  .clinic-name { font-size: 16px; font-weight: bold; color: #2e6b3e; }
+  .clinic-sub { font-size: 9px; color: #666; margin-top: 3px; }
+  .stmt-info { text-align: right; font-size: 9.5px; color: #555; }
+  .info-row { display: flex; gap: 0; border: 1px solid #ccc; margin-bottom: 18px; }
+  .info-cell { flex: 1; padding: 9px 12px; border-right: 1px solid #ccc; }
+  .info-cell:last-child { border-right: none; }
+  .i-label { font-size: 8px; text-transform: uppercase; color: #888; font-weight: bold; margin-bottom: 2px; }
+  .i-val { font-size: 10.5px; color: #111; }
+  .sec-head { background: #2e6b3e; color: #fff; font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 10px; }
+  th { background: #f0f5f1; padding: 6px 8px; text-align: left; border-bottom: 1px solid #bbb; font-size: 8.5px; text-transform: uppercase; color: #555; }
+  td { padding: 6px 8px; border-bottom: 1px solid #eee; }
+  td.code { font-family: monospace; font-weight: bold; color: #2e6b3e; }
+  td.amt { text-align: right; font-family: monospace; }
+  .summary { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+  .sum-box { width: 260px; border: 1px solid #ccc; font-size: 10.5px; }
+  .sum-line { display: flex; justify-content: space-between; padding: 6px 10px; border-bottom: 1px solid #eee; }
+  .sum-line.total { background: #2e6b3e; color: #fff; font-weight: bold; font-size: 11px; }
+  .sum-line .v { font-family: monospace; }
+  .note { background: #f9fdf9; border: 1px solid #c3ddc9; padding: 10px 14px; font-size: 9px; color: #2e6b3e; line-height: 1.5; margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="clinic-name">Greenfield Family Medicine</div>
+      <div class="clinic-sub">301 Wellness Way · Springfield, IL 62702 · (217) 555-0220</div>
+      <div class="clinic-sub">NPI: 5566778899 · Tax ID: 36-9876543</div>
+    </div>
+    <div class="stmt-info">
+      Patient Statement<br>
+      Statement Date: April 30, 2026<br>
+      Acct: GFM-2026-00817
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-cell"><div class="i-label">Patient</div><div class="i-val">Robert S. Carey</div></div>
+    <div class="info-cell"><div class="i-label">Date of Service</div><div class="i-val">April 10, 2026</div></div>
+    <div class="info-cell"><div class="i-label">Insurance</div><div class="i-val">Aetna HMO</div></div>
+    <div class="info-cell"><div class="i-label">Member ID</div><div class="i-val">AET-0033-9128</div></div>
+  </div>
+
+  <div class="sec-head">Charges</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th><th>CPT Code</th><th>Description</th><th>Provider</th><th style="text-align:right">Billed</th><th style="text-align:right">Ins. Paid</th><th style="text-align:right">Your Share</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>04/10/2026</td>
+        <td class="code">99213</td>
+        <td>Office Visit, Established Patient – Level 3 (Low complexity)</td>
+        <td>Dr. L. Greenfield</td>
+        <td class="amt">$175.00</td>
+        <td class="amt">$140.00</td>
+        <td class="amt">$35.00</td>
+      </tr>
+      <tr>
+        <td>04/10/2026</td>
+        <td class="code">85025</td>
+        <td>Complete Blood Count with Differential</td>
+        <td>In-house Lab</td>
+        <td class="amt">$88.00</td>
+        <td class="amt">$70.40</td>
+        <td class="amt">$17.60</td>
+      </tr>
+      <tr>
+        <td>04/10/2026</td>
+        <td class="code">80053</td>
+        <td>Comprehensive Metabolic Panel</td>
+        <td>In-house Lab</td>
+        <td class="amt">$95.00</td>
+        <td class="amt">$76.00</td>
+        <td class="amt">$19.00</td>
+      </tr>
+      <tr>
+        <td>04/10/2026</td>
+        <td class="code">36415</td>
+        <td>Routine venipuncture (blood draw)</td>
+        <td>In-house Lab</td>
+        <td class="amt">$22.00</td>
+        <td class="amt">$17.60</td>
+        <td class="amt">$4.40</td>
+      </tr>
+      <tr>
+        <td>04/10/2026</td>
+        <td class="code">A4550</td>
+        <td>Surgical supplies — gloves, gauze (2 units)</td>
+        <td>Greenfield FM</td>
+        <td class="amt">$12.00</td>
+        <td class="amt">$0.00</td>
+        <td class="amt">$12.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <div class="sum-box">
+      <div class="sum-line"><span>Total Billed</span><span class="v">$392.00</span></div>
+      <div class="sum-line"><span>Insurance Paid</span><span class="v">– $304.00</span></div>
+      <div class="sum-line"><span>Adjustments</span><span class="v">– $0.00</span></div>
+      <div class="sum-line total"><span>Amount Due</span><span class="v">$88.00</span></div>
+    </div>
+  </div>
+
+  <div class="note">
+    ✔ All providers on this bill are IN-NETWORK with your Aetna HMO plan.<br>
+    ✔ All charges include CPT codes for your records.<br>
+    ✔ Questions? Call Patient Billing at (217) 555-0220 ext. 2, Mon–Fri 8am–5pm.<br>
+    ✔ Financial hardship assistance available — ask our billing team.
+  </div>
+</div>
+</body>
+</html>

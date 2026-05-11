@@ -1,0 +1,52 @@
+{
+    "summary": "This is a predatory payday loan agreement with an extreme 391.07% APR and a dangerous rollover trap that makes it very difficult to pay off the debt. It contains a misleading legal disclosure regarding the total cost of the loan and should be avoided; the most important step is to find an alternative lender.",
+    "document_type": "Loan Agreement & Disclosure",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Extremely high Annual Percentage Rate (APR) of 391.07%",
+            "why": "The APR is the total yearly cost of borrowing expressed as a percentage. A rate this high is predatory and means you are paying an enormous amount of money for a very small, short-term loan.",
+            "impact": "The cost of credit is $75 for a 14-day period on a $500 loan.",
+            "category": "Major"
+        },
+        {
+            "what": "Rollover / Renewal Terms",
+            "why": "This allows you to 'renew' the loan by paying only the fees without paying back the original $500. This creates a 'debt trap' where you pay endless fees without ever reducing the amount you actually owe.",
+            "impact": "As shown in the document's own example, rolling the loan 4 times results in $380 in fees alone.",
+            "category": "Major"
+        },
+        {
+            "what": "Forced Add-on: QuickCash Payment Protection",
+            "why": "This is a service added to your balance automatically. Forced add-ons increase the cost of the loan for a product you may not want or need.",
+            "impact": "$18.00 added to the loan balance.",
+            "category": "Major"
+        },
+        {
+            "what": "Misleading Truth in Lending Act (TILA) Disclosure",
+            "why": "The legally required 'Total of Payments' box lists $575.00, but the 'Total Due' section lists $610.00 because the lender hid the Origination and Verification fees from the summary box. This violates the requirement for clear and accurate cost disclosure. (Note: This should be researched further as laws vary by state).",
+            "impact": "$35.00 in fees were omitted from the primary federal disclosure box.",
+            "category": "Illegal",
+            "law_cite": "TILA 15 U.S.C. \u00a7 1638"
+        },
+        {
+            "what": "Mandatory Arbitration Clause",
+            "why": "This forces you to give up your right to a jury trial or to join a class-action lawsuit if the company cheats you; you must use a private arbitrator instead.",
+            "impact": "Loss of legal rights to seek justice in a public court.",
+            "category": "Medium"
+        },
+        {
+            "what": "Aggressive NSF (Insufficient Funds) Fees",
+            "why": "If you don't have enough money in your account on the due date, they will try to take the money 6 additional times, charging a high fee every single time.",
+            "impact": "Potential for $210.00 in fees ($35 x 6) if the payment fails repeatedly.",
+            "category": "Medium"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA), you have the right to a clear, honest, and accurate disclosure of the total cost of your loan, including all fees and the Annual Percentage Rate (APR). You also have a specific right under this contract to cancel the 'Payment Protection' add-on within 5 days for a full refund.",
+    "action_steps": [
+        "Stop and do not sign this agreement; the terms are predatory and designed to keep you in debt.",
+        "Look for a 'Payday Alternative Loan' (PAL) at a local credit union or contact a community non-profit for low-interest emergency financial assistance.",
+        "If you have already signed this document, send a written request to QuickCash Express immediately to cancel the 'QuickCash Payment Protection' and demand a refund of the $18.00."
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "The loan features an extreme APR and a rollover structure typical of predatory payday lenders, combined with a misleading legal disclosure."
+}

@@ -1,0 +1,20 @@
+{
+    "summary": "This is a medical bill for an office visit and lab work. The only red flag is a minor charge for basic supplies, but the document otherwise appears standard and legally sound. You should compare this bill with your insurance company's Explanation of Benefits before paying.",
+    "document_type": "Patient Statement / Medical Bill",
+    "category": "MEDICAL_BILL",
+    "red_flags": [
+        {
+            "what": "Charge for basic supplies (gloves, gauze)",
+            "why": "Charging separately for basic consumables like gloves and gauze is often considered an inflated cost, as these materials are usually bundled into the overall cost of the medical service provided.",
+            "impact": "$12.00",
+            "category": "Minor"
+        }
+    ],
+    "your_rights": "You have the right to receive a fully itemized bill and to dispute any charges you believe are incorrect. Under the No Surprises Act (42 U.S.C. \u00a7 300gg-111), you are protected from unexpected out-of-network bills for emergency services or certain non-emergency services at in-network facilities.",
+    "action_steps": [
+        "Compare this statement with the Explanation of Benefits (EOB)\u2014the document your insurance company sends to show what they paid\u2014from Aetna to make sure the 'Insurance Paid' and 'Your Share' amounts match exactly.",
+        "Review your own records to confirm that all listed services, including the lab tests and the office visit, actually took place on April 10, 2026.",
+        "Contact the billing department at (217) 555-0220 to ask if the $12 charge for basic supplies can be waived."
+    ],
+    "urgency": "LOW"
+}

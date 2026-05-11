@@ -1,0 +1,51 @@
+{
+    "summary": "This is a rent-to-own agreement for a television that charges a predatory 183% effective interest rate and includes mandatory fees. The contract is designed to make the consumer pay nearly three times the retail price of the item and explicitly attempts to avoid federal lending laws. The most important next step is to not sign this contract.",
+    "document_type": "Rental-Purchase Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Extremely high effective interest rate (APR)",
+            "why": "An APR of 183% is predatory and far exceeds the 36% threshold generally considered the limit for fair consumer lending. It creates a debt trap where the consumer pays far more than the item is worth.",
+            "impact": "$2,338.97 more than the retail price",
+            "category": "Major"
+        },
+        {
+            "what": "Mandatory Loss Damage Waiver (LDW)",
+            "why": "The agreement forces the consumer to pay for a 'waiver' that is not insurance, adding a significant cost that cannot be declined or substituted with existing homeowner's insurance.",
+            "impact": "$518.96 over the life of the agreement",
+            "category": "Major"
+        },
+        {
+            "what": "Inflated base price",
+            "why": "The company lists their 'cash price' as $1,499.99, which is $200 higher than the verified Best Buy retail price, ensuring the consumer starts at a disadvantage.",
+            "impact": "$200.00",
+            "category": "Medium"
+        },
+        {
+            "what": "Explicit attempt to evade the Truth in Lending Act (TILA)",
+            "why": "The document claims it is a 'rental' to avoid TILA disclosure requirements. Many rent-to-own agreements are legally viewed as credit transactions; avoiding these disclosures prevents the consumer from seeing the true cost of credit in a standardized format. (Note: This should be researched further as laws vary by state).",
+            "impact": "Prevents consumer from receiving federally mandated financial disclosures",
+            "category": "Illegal"
+        },
+        {
+            "what": "Predatory Early Purchase Option",
+            "why": "The buyout price is calculated so that even after paying for 6 months (26 weeks), the cost to own the TV is still higher than if you had bought it at retail price today.",
+            "impact": "Example: $1,364.61 buyout after 26 weeks of payments",
+            "category": "Major"
+        },
+        {
+            "what": "Total forfeiture of payments",
+            "why": "If a single weekly payment is missed, the company can take the item back and keep every penny previously paid, leaving the consumer with nothing.",
+            "impact": "Loss of 100% of all payments made prior to repossession",
+            "category": "Major"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA, 15 U.S.C. \u00a7 1601), consumers have the right to a clear and standardized disclosure of the cost of credit, including the APR. While this company claims to be a rental service, many state consumer protection laws, such as the Illinois Consumer Fraud and Deceptive Business Practices Act, protect consumers from deceptive pricing and unfair contract terms.",
+    "action_steps": [
+        "DO NOT sign this agreement. The total cost of $3,638.96 is nearly triple the retail price of $1,299.99.",
+        "Seek alternative financing options, such as a credit union loan or a store-branded credit card with a 0% introductory APR period, if you cannot pay cash.",
+        "If you have already been pressured into this agreement, contact the Illinois Attorney General's Consumer Protection Division to report predatory rent-to-own practices."
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "The agreement contains multiple major predatory flags, including an APR nearly six times the acceptable threshold and a structure designed to strip equity from the consumer through mandatory fees and forfeiture clauses."
+}

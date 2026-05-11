@@ -1,0 +1,52 @@
+{
+    "summary": "This is a medical bill containing major red flags, specifically extreme markups for basic medications and a lack of detailed billing codes. The document appears potentially predatory in its pricing, and the most important next step is to request a full itemized bill and apply for the Charity Care program.",
+    "document_type": "Medical Bill",
+    "category": "MEDICAL_BILL",
+    "red_flags": [
+        {
+            "what": "Missing CPT/HCPCS codes",
+            "why": "The bill uses placeholders like '(see itemized bill for code)' instead of listing the standard medical codes used for billing. Without these codes, you cannot verify if the services billed were actually performed or if you are being overcharged for a simpler service.",
+            "impact": "Affects the majority of the $8,956.00 total",
+            "category": "Minor"
+        },
+        {
+            "what": "Extreme Pharmacy Markups",
+            "why": "The bill charges $74.00 for two Ibuprofen tablets and $52.00 for two Acetaminophen tablets. These are basic, over-the-counter medications that typically cost cents per pill. This exceeds the 500% acquisition cost threshold for predatory pricing.",
+            "impact": "$126.00 for four pills",
+            "category": "Major"
+        },
+        {
+            "what": "Duplicate-style Facility Fees",
+            "why": "The bill charges both an 'Emergency Room Visit' fee ($2,800) and a separate 'Facility Fee' ($420) for the same encounter. Charging both without clear prior disclosure is often a way to inflate the bill.",
+            "impact": "$420.00",
+            "category": "Major"
+        },
+        {
+            "what": "Vague Medical/Surgical Supplies charge",
+            "why": "A charge of $890.00 for 'supplies' without any detail is a common way for hospitals to hide inflated costs for basic items like gauze, tape, or tissues.",
+            "impact": "$890.00",
+            "category": "Minor"
+        }
+    ],
+    "your_rights": "Under the No Surprises Act (42 U.S.C. \u00a7 300gg-111), as an uninsured or self-pay patient, you are entitled to a 'Good Faith Estimate' of how much your care would cost before the service is provided. If the final bill is $400 or more above that estimate, you may have the right to dispute the bill through a federal dispute process. Additionally, you have the right to request a full itemized bill to verify every charge.",
+    "action_steps": [
+        {
+            "step": 1,
+            "description": "Call the Patient Financial Services department at (217) 555-0300 ext. 4 and submit a written request for a full itemized bill with procedure codes, citing their own promise to provide it within 30 days."
+        },
+        {
+            "step": 2,
+            "description": "Ask the billing department for the 'Good Faith Estimate' that should have been provided before your visit to see if the $8,956.00 charge exceeds that estimate by $400 or more."
+        },
+        {
+            "step": 3,
+            "description": "Call (217) 555-0301 to speak with a Financial Counselor and apply for the Charity Care program to see if your income qualifies you for a larger discount or a complete waiver of the bill."
+        },
+        {
+            "step": 4,
+            "description": "Once you receive the itemized bill, specifically challenge the pharmacy charges for Ibuprofen and Acetaminophen as being unconscionably high compared to market rates."
+        }
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "The pharmacy markups are extreme and predatory, and the lack of billing codes makes it impossible to verify the legitimacy of the thousands of dollars in charges. No payment should be made until an itemized bill is reviewed and Charity Care options are exhausted."
+}

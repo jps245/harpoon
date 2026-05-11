@@ -1,0 +1,41 @@
+{
+    "summary": "This is a personal loan agreement with a predatory interest rate of 89.90% that appears to illegally violate the Military Lending Act by charging an active-duty service member far above the legal limit. The document is not legally sound and the most important next step is to avoid signing and seek military legal counsel.",
+    "document_type": "Personal Loan Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Interest Rate (APR) of 89.90%",
+            "why": "This rate is extremely predatory and far exceeds the standard benchmark for fair consumer loans, making the debt much harder to pay off.",
+            "impact": "The borrower will pay $1,348.50 in finance charges for a $3,000 loan.",
+            "category": "Major"
+        },
+        {
+            "what": "Illegal Interest Rate for Military Personnel",
+            "why": "The Military Lending Act (MLA) caps the Military Annual Percentage Rate (MAPR) at 36% for active-duty service members. The lender is attempting to bypass this law by claiming an exemption that does not typically apply to these loan terms. This should be researched further as laws vary by situation.",
+            "impact": "The borrower is being charged 53.9% more in annual interest than the federal legal limit for military members.",
+            "category": "Illegal",
+            "citation": "Military Lending Act, 10 U.S.C. \u00a7 987"
+        },
+        {
+            "what": "Prepayment Penalty",
+            "why": "This fee punishes the borrower for trying to pay off the loan early to save money on interest.",
+            "impact": "The borrower must pay 2% of the remaining loan balance if they pay it off early.",
+            "category": "Medium"
+        },
+        {
+            "what": "Mandatory Arbitration Clause",
+            "why": "This forces the borrower to resolve disputes through a private process instead of in a public court, and waives the right to join a class-action lawsuit with other victims of the lender.",
+            "impact": "Loss of the right to a jury trial and collective legal action.",
+            "category": "Medium"
+        }
+    ],
+    "your_rights": "Under the Military Lending Act (10 U.S.C. \u00a7 987), active-duty service members are protected from paying more than a 36% Military Annual Percentage Rate (MAPR) on most consumer loans. Additionally, under the Truth in Lending Act (TILA, 15 U.S.C. \u00a7 1638), you have the right to a clear and accurate disclosure of the cost of credit, including the APR.",
+    "action_steps": [
+        "Do NOT sign this agreement or authorize any military allotments for this loan.",
+        "Immediately contact your base JAG (Judge Advocate General) office for free legal assistance regarding the Military Lending Act violation.",
+        "File a complaint with the Consumer Financial Protection Bureau (CFPB) regarding the lender's attempt to charge a prohibited rate to a service member.",
+        "Visit your installation's financial readiness center for free, non-predatory loan alternatives or financial counseling."
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "The agreement contains a predatory interest rate and appears to explicitly violate federal law protecting active-duty military members."
+}

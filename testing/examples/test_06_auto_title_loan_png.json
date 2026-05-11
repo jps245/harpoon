@@ -1,0 +1,46 @@
+{
+    "summary": "This is a vehicle title loan agreement featuring predatory terms, including an extremely high 214.50% interest rate and a GPS device that can remotely disable your car. The document appears to potentially violate federal disclosure laws by hiding certain fees from the official Truth in Lending disclosure, and you should not sign this agreement.",
+    "document_type": "Vehicle Title Loan Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Extreme Annual Percentage Rate (APR) of 214.50%",
+            "why": "This rate is predatory and far exceeds the 36% benchmark used by consumer advocates to identify unfair loans. It makes the cost of borrowing incredibly expensive.",
+            "impact": "You are paying $262.50 in interest for every 30 days you hold the $1,500 loan.",
+            "category": "Major"
+        },
+        {
+            "what": "Vehicle Collateral and Repossession Terms",
+            "why": "Using your car as collateral means you risk losing your primary mode of transportation for a relatively small loan. The lender can repossess the car without prior notice.",
+            "impact": "Loss of vehicle plus additional costs: a $150 reinstatement fee and $35 per day in storage fees.",
+            "category": "Major"
+        },
+        {
+            "what": "Rollover and Renewal Options",
+            "why": "Allowing you to pay only the interest to extend the loan creates a 'debt trap' where you never actually pay down the original $1,500 you borrowed.",
+            "impact": "As shown in the document's own example, renewing 6 times would result in paying $1,575 in interest alone, more than double the original loan amount.",
+            "category": "Major"
+        },
+        {
+            "what": "GPS Monitoring and Remote Ignition Kill Switch",
+            "why": "The lender is installing a device to track your location and remotely disable your car's engine, which is an invasive practice that allows them to seize control of your vehicle instantly.",
+            "impact": "$75 added to your loan balance and the risk of being stranded if the lender disables your car.",
+            "category": "Major"
+        },
+        {
+            "what": "Incorrect Federal Truth in Lending (TILA) Disclosure",
+            "why": "The lender explicitly states that the $75 GPS fee and $50 lien fee are 'not reflected' in the TILA disclosure. Under the Truth in Lending Act, fees required to obtain the loan generally must be included in the finance charge and APR calculation.",
+            "impact": "The official cost of the loan is understated by $125 in the legally required disclosure box.",
+            "category": "Illegal"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA, 15 U.S.C. \u00a7 1638), you have the right to a clear and accurate disclosure of the total cost of your credit, including all finance charges and the APR. You may also have protections under Illinois state law regarding maximum allowable interest rates (usury laws) for title loans.",
+    "action_steps": [
+        "Do not sign this agreement or provide the title to your vehicle.",
+        "Look for alternative lending options, such as a local credit union or a community assistance program, which offer significantly lower interest rates.",
+        "If you have already signed this document, contact a consumer protection attorney or the Illinois Attorney General's Consumer Protection Division to discuss the legality of the fees and interest rate.",
+        "Research the specific 'Illegal' flag regarding TILA disclosures further, as state and federal laws vary by situation."
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "This document contains multiple predatory terms (Major flags) and a potential violation of federal disclosure laws (Illegal flag). Signing this could lead to a cycle of debt and the rapid loss of your vehicle."
+}

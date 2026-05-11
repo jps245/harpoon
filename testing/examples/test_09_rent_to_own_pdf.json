@@ -1,0 +1,51 @@
+{
+    "summary": "This is a predatory rent-to-own agreement for a TV with an effective APR of 183% and a total cost nearly three times the retail value. It includes forced fees and explicitly attempts to bypass federal disclosure laws; the consumer should avoid signing this and seek traditional financing.",
+    "document_type": "Rent-to-Own Agreement",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Extreme Total Cost",
+            "why": "The total cost of payments ($3,638.96) is nearly three times the retail price ($1,299.99), meaning the consumer pays over $2,300 extra just to own the TV.",
+            "impact": "$2,338.97 over retail price",
+            "category": "Major"
+        },
+        {
+            "what": "Predatory APR",
+            "why": "The document admits to an effective interest rate (the annual cost of borrowing) of approximately 183%, which is far above the 36% threshold typically used to identify predatory lending.",
+            "impact": "183% APR",
+            "category": "Major"
+        },
+        {
+            "what": "Forced Loss Damage Waiver (LDW)",
+            "why": "The LDW is mandatory and cannot be waived, adding a significant recurring cost that is not actual insurance but a 'service benefit' provided by the company.",
+            "impact": "$518.96 total fee",
+            "category": "Major"
+        },
+        {
+            "what": "Weekly Processing Fee",
+            "why": "A recurring fee is added to every payment, further inflating the cost of the item beyond the base rental price.",
+            "impact": "$414.96 total fee",
+            "category": "Medium"
+        },
+        {
+            "what": "Forfeiture of all payments",
+            "why": "If one weekly payment is missed, the company can take the item back and keep all previous payments. The consumer gains no ownership rights until the final payment is made.",
+            "impact": "Potential loss of all payments made up to the point of repossession",
+            "category": "Major"
+        },
+        {
+            "what": "Explicit attempt to bypass TILA",
+            "why": "The contract states it is not subject to the Truth in Lending Act (TILA) because it is 'structured as a rental'. This is a common tactic to avoid legal requirements to disclose the true cost of credit. Caveat: This should be researched further as laws vary by state and situation.",
+            "impact": "Avoidance of federal consumer protection disclosures",
+            "category": "Illegal"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA) 15 U.S.C. \u00a7 1601, consumers generally have the right to clear disclosures of the cost of credit, including the APR. While the company claims this is a 'rental', many rent-to-own agreements are legally viewed as credit sales. You also have rights under Illinois state consumer protection laws regarding fair contracting and prohibited predatory practices.",
+    "action_steps": [
+        "Do not sign this agreement.",
+        "Calculate the 'True Cost' by comparing the $3,638.96 total against the $1,299.99 retail price to understand the actual financial impact of this deal.",
+        "Research alternative financing options, such as a personal loan from a credit union or a store credit card with a 0% introductory APR, which would cost significantly less.",
+        "If you have already signed and are experiencing issues, contact the Illinois Attorney General's Consumer Protection Division to report predatory lending practices."
+    ],
+    "urgency": "HIGH"
+}

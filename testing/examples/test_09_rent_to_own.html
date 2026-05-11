@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rent-to-Own Agreement</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 10.5px; background: #ddd; padding: 32px; color: #111; }
+  .page { background: #fff; width: 740px; margin: 0 auto; padding: 40px 48px; border: 1px solid #bbb; }
+  .header { background: #1a5c1a; color: #fff; padding: 18px 24px; margin: -40px -48px 28px -48px; display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 17px; font-weight: bold; }
+  .header p { font-size: 9px; margin-top: 3px; opacity: 0.88; }
+  .header-right { text-align: right; font-size: 9.5px; }
+  .section { margin-bottom: 16px; }
+  .section h4 { font-size: 10px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 8px; color: #1a5c1a; }
+  p { margin-bottom: 10px; line-height: 1.6; }
+  .fine-print { font-size: 8.5px; color: #555; line-height: 1.5; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 10px; }
+  th { background: #edf5ed; padding: 6px 8px; text-align: left; border: 1px solid #ccc; font-size: 8.5px; text-transform: uppercase; }
+  td { padding: 6px 8px; border: 1px solid #ccc; }
+  .cost-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  .cost-box { border: 2px solid #ccc; padding: 12px; text-align: center; }
+  .cost-box.rto { border-color: #1a5c1a; }
+  .cost-box .label { font-size: 9px; text-transform: uppercase; color: #666; font-weight: bold; margin-bottom: 6px; }
+  .cost-box .amount { font-size: 20px; font-weight: bold; }
+  .cost-box.rto .amount { color: #1a5c1a; }
+  .cost-box .sub { font-size: 8.5px; color: #666; margin-top: 4px; }
+  .warn { background: #f0fff0; border: 1px solid #1a5c1a; padding: 10px 14px; margin: 10px 0; font-size: 9.5px; line-height: 1.5; }
+  .sig-area { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .sig-line { border-top: 1px solid #333; padding-top: 4px; font-size: 9px; color: #555; margin-top: 32px; }
+  .highlight { background: #fff9e6; border-left: 3px solid #cc8800; padding: 8px 12px; margin: 10px 0; font-size: 10px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <h1>EasyHome Rental Center</h1>
+      <p>Rent-to-Own · Furniture · Electronics · Appliances</p>
+      <p>1400 S. Grand Ave · Springfield, IL 62703 · (217) 555-0188</p>
+    </div>
+    <div class="header-right">
+      RENTAL-PURCHASE AGREEMENT<br>
+      Contract No: EH-2026-4471<br>
+      Date: April 14, 2026
+    </div>
+  </div>
+
+  <div class="section">
+    <h4>Rental Item</h4>
+    <table>
+      <tr><th>Item Description</th><td>Samsung 65" QLED 4K Smart TV (QN65Q80C)</td></tr>
+      <tr><th>Retail Cash Price</th><td>$1,299.99 (Best Buy verified)</td></tr>
+      <tr><th>EasyHome Cash Price</th><td>$1,499.99</td></tr>
+      <tr><th>Condition</th><td>New</td></tr>
+      <tr><th>Serial No.</th><td>SN-2024-QN65-00482</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h4>Rental Terms</h4>
+    <table>
+      <tr><th>Weekly Payment</th><td><strong>$34.99/week</strong></td><th>Rental Term</th><td>104 weeks (2 years)</td></tr>
+      <tr><th>Total of Payments</th><td><strong>$3,638.96</strong></td><th>Early Purchase Option</th><td>See Early Purchase section</td></tr>
+      <tr><th>Processing Fee (weekly)</th><td>$3.99/week</td><th>Total Processing Fees</th><td>$414.96</td></tr>
+      <tr><th>Loss Damage Waiver</th><td>$4.99/week (required)</td><th>Total LDW Cost</th><td>$518.96</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h4>True Cost Comparison</h4>
+    <div class="cost-compare">
+      <div class="cost-box">
+        <div class="label">Buy it today (Best Buy)</div>
+        <div class="amount">$1,299.99</div>
+        <div class="sub">One-time payment. You own it immediately.</div>
+      </div>
+      <div class="cost-box rto">
+        <div class="label">Rent-to-Own (EasyHome)</div>
+        <div class="amount">$3,638.96</div>
+        <div class="sub">104 weekly payments. Ownership after final payment.</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <strong>You will pay $2,338.97 more than the retail price</strong> of this TV if you complete the full rental term. This is equivalent to an effective interest rate of approximately 183% APR. Note: This agreement is structured as a rental, not a credit transaction, and is therefore not subject to Truth in Lending Act (TILA) disclosure requirements in Illinois.
+    </div>
+  </div>
+
+  <div class="section">
+    <h4>Loss Damage Waiver (LDW) — Required</h4>
+    <p>Enrollment in the EasyHome Loss Damage Waiver is mandatory and cannot be waived. LDW covers accidental damage, theft, or loss of the rental item. The LDW is not insurance. It is a service benefit provided by EasyHome Rental Center. LDW does not cover: intentional damage, disappearance without evidence of theft, or damage during unauthorized relocation of the item.</p>
+    <p class="fine-print">The LDW fee of $4.99/week ($518.96 total) is included in your weekly payment. You may not substitute your homeowner's or renter's insurance for LDW.</p>
+  </div>
+
+  <div class="section">
+    <h4>Early Purchase Option</h4>
+    <p class="fine-print">You may purchase the item outright at any time during the rental term. The early purchase price is calculated as 50% of all remaining weekly payments. Example: After 26 weeks ($909.74 paid), your early purchase price would be 50% × 78 remaining payments × $34.99 = $1,364.61 — still more than the original retail price of $1,299.99.</p>
+  </div>
+
+  <div class="section">
+    <h4>Missed Payments &amp; Return Policy</h4>
+    <p>If you miss a weekly payment, EasyHome may retrieve the rental item with 5 days' notice. All payments made prior to return are forfeited — you do not acquire ownership rights until the final payment is made. There are no partial refunds.</p>
+  </div>
+
+  <div class="sig-area">
+    <div><div class="sig-line">Customer Signature / Date</div></div>
+    <div><div class="sig-line">EasyHome Representative / Date</div></div>
+  </div>
+</div>
+</body>
+</html>

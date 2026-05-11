@@ -1,0 +1,34 @@
+{
+    "summary": "This is a medical bill from St. Augustine Medical Center. It contains major red flags regarding extreme pharmacy markups for basic medication and a lack of detailed procedure codes. While the document appears standard, the pricing for common drugs is predatory, and the most important next step is to request a full itemized bill.",
+    "document_type": "Medical Bill",
+    "category": "MEDICAL_BILL",
+    "red_flags": [
+        {
+            "item": "Missing CPT/HCPCS codes",
+            "harm": "The bill lists general categories rather than specific industry-standard codes (CPT/HCPCS) that identify the exact service provided. This makes it impossible to verify if the charges are accurate or if you were 'upcoded' (billed for a more expensive service than you actually received).",
+            "impact": "Potential for significant overcharging across the $8,956.00 total.",
+            "severity": "Minor"
+        },
+        {
+            "item": "Extreme Pharmacy Markups",
+            "harm": "The bill charges $74.00 for two ibuprofen tablets and $52.00 for two acetaminophen tablets. These are common over-the-counter drugs that normally cost pennies, representing a markup far exceeding 500% of the cost to acquire them.",
+            "impact": "$126.00 for basic medication.",
+            "severity": "Major"
+        },
+        {
+            "item": "Vague Medical/Surgical Supplies charge",
+            "harm": "A large lump sum of $890.00 is charged for 'supplies' without any detail. Hospitals often inflate the cost of basic items like gauze or bandages when they are billed as a generic bundle.",
+            "impact": "$890.00",
+            "severity": "Minor"
+        }
+    ],
+    "your_rights": "You have the right to request a full itemized bill with procedure codes to verify every charge. Additionally, you may be eligible for financial assistance through the hospital's Charity Care program, which is often required for non-profit hospitals under federal law (Affordable Care Act Section 501(r)) to provide free or discounted care to low-income patients.",
+    "action_steps": [
+        "Call Patient Financial Services at (217) 555-0300 ext. 4 and request a full itemized bill with CPT/HCPCS codes in writing.",
+        "Once you receive the itemized bill, dispute the pharmacy charges for Ibuprofen and Acetaminophen, as these prices are predatory for common over-the-counter medications.",
+        "Contact a Financial Counselor at (217) 555-0301 to apply for the Charity Care program based on your income to potentially reduce the balance further.",
+        "Use the CPT codes from the itemized bill to check fair market prices on websites like Healthcare Bluebook or Fair Health Consumer to identify other potential overcharges."
+    ],
+    "urgency": "MEDIUM",
+    "urgency_reason": "There are significant pharmacy markups and a total lack of transparency regarding the specific services provided. While the account is not yet in collections, the consumer should act now to lower the balance before making any payments."
+}

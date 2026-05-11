@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Statement – Riverside General Hospital</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: #1a1a1a;
+    background: #f0ede8;
+    padding: 32px;
+  }
+
+  .page {
+    background: #fff;
+    width: 780px;
+    margin: 0 auto;
+    padding: 48px 52px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid #1a3a5c;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .hospital-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a3a5c;
+    letter-spacing: -0.5px;
+  }
+
+  .hospital-sub {
+    font-size: 10px;
+    color: #666;
+    margin-top: 3px;
+  }
+
+  .statement-label {
+    text-align: right;
+  }
+
+  .statement-label .title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a3a5c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .statement-label .stmt-num {
+    font-size: 10px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* Patient / Account Info Grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+
+  .info-cell {
+    padding: 10px 12px;
+    border-right: 1px solid #ccc;
+  }
+
+  .info-cell:last-child { border-right: none; }
+
+  .info-label {
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #888;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  .info-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: #1a1a1a;
+    font-weight: 500;
+  }
+
+  /* Section headers */
+  .section-header {
+    background: #1a3a5c;
+    color: #fff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 10px;
+    margin-bottom: 0;
+  }
+
+  /* Charge table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 10.5px;
+  }
+
+  thead th {
+    background: #e8ecf0;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #555;
+    font-weight: 600;
+    padding: 7px 8px;
+    text-align: left;
+    border-bottom: 1px solid #bbb;
+  }
+
+  thead th.right { text-align: right; }
+
+  tbody tr { border-bottom: 1px solid #e5e5e5; }
+  tbody tr:last-child { border-bottom: 2px solid #bbb; }
+  tbody tr:hover { background: #fafafa; }
+
+  tbody td {
+    padding: 7px 8px;
+    vertical-align: top;
+  }
+
+  td.code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: #1a3a5c;
+    white-space: nowrap;
+  }
+
+  td.desc { color: #333; }
+  td.desc .note { font-size: 9px; color: #e05c00; margin-top: 2px; font-style: italic; }
+
+  td.amount {
+    font-family: 'IBM Plex Mono', monospace;
+    text-align: right;
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+
+  td.amount.strike {
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  tr.subtotal td {
+    background: #f5f5f5;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+  }
+
+  /* Summary box */
+  .summary-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .summary-box {
+    width: 280px;
+    border: 2px solid #1a3a5c;
+  }
+
+  .summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 10.5px;
+  }
+
+  .summary-line:last-child { border-bottom: none; }
+
+  .summary-line.total {
+    background: #1a3a5c;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+  }
+
+  .summary-line .label { color: inherit; }
+  .summary-line .val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+  }
+
+  /* Notice box */
+  .notice {
+    border: 1px solid #ccc;
+    border-left: 3px solid #c0392b;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 9.5px;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  .notice strong { color: #c0392b; }
+
+  /* Provider info */
+  .provider-section {
+    margin-bottom: 16px;
+  }
+
+  .provider-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+  }
+
+  .provider-table th {
+    background: #e8ecf0;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #555;
+    font-weight: 600;
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #bbb;
+  }
+
+  .provider-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  .provider-table td.oon {
+    color: #c0392b;
+    font-weight: 600;
+    font-size: 9.5px;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+    font-size: 8.5px;
+    color: #999;
+    line-height: 1.5;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer a { color: #1a3a5c; }
+
+  .due-box {
+    background: #c0392b;
+    color: #fff;
+    padding: 12px 18px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .due-box .due-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+  }
+
+  .due-box .due-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .due-box .due-date {
+    font-size: 9px;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="hospital-name">RIVERSIDE GENERAL HOSPITAL</div>
+      <div class="hospital-sub">4400 Medical Center Blvd · Springfield, IL 62701 · (217) 555-0100</div>
+      <div class="hospital-sub">NPI: 1234567890 · Tax ID: 36-1234567</div>
+    </div>
+    <div class="statement-label">
+      <div class="title">Patient Statement</div>
+      <div class="stmt-num">Statement No: 2026-04-88341</div>
+      <div class="stmt-num">Statement Date: April 30, 2026</div>
+    </div>
+  </div>
+
+  <!-- Patient Info -->
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="info-label">Patient Name</div>
+      <div class="info-value">Johnson, Maria T.</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Account Number</div>
+      <div class="info-value">RGH-2026-041192</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Date of Service</div>
+      <div class="info-value">April 14, 2026</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Insurance</div>
+      <div class="info-value">BlueCross BlueShield IL</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Member ID</div>
+      <div class="info-value">BCB-4491-0022X</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Facility</div>
+      <div class="info-value">Outpatient Surgery</div>
+    </div>
+  </div>
+
+  <!-- Provider Summary -->
+  <div class="provider-section">
+    <div class="section-header">Providers Billed</div>
+    <table class="provider-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Specialty</th>
+          <th>NPI</th>
+          <th>Network Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dr. Alan Burke, MD</td>
+          <td>General Surgery</td>
+          <td>9876543210</td>
+          <td>IN-NETWORK</td>
+        </tr>
+        <tr>
+          <td>Midwest Anesthesia Partners, LLC</td>
+          <td>Anesthesiology</td>
+          <td>1122334455</td>
+          <td class="oon">OUT-OF-NETWORK</td>
+        </tr>
+        <tr>
+          <td>Riverside General Hospital</td>
+          <td>Facility</td>
+          <td>1234567890</td>
+          <td>IN-NETWORK</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Physician Charges -->
+  <div class="section-header">Physician Charges — Dr. Alan Burke, MD</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:90px">Date</th>
+        <th style="width:90px">CPT Code</th>
+        <th>Description</th>
+        <th class="right" style="width:90px">Billed</th>
+        <th class="right" style="width:90px">Ins. Paid</th>
+        <th class="right" style="width:100px">Your Portion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">99215</td>
+        <td class="desc">
+          Office/Outpatient Visit, Level 5 – Established Patient
+          <div class="note">⚠ Comprehensive/High-complexity MDM</div>
+        </td>
+        <td class="amount">$389.00</td>
+        <td class="amount">$211.00</td>
+        <td class="amount">$178.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">44950</td>
+        <td class="desc">Appendectomy, open</td>
+        <td class="amount">$3,100.00</td>
+        <td class="amount">$2,480.00</td>
+        <td class="amount">$620.00</td>
+      </tr>
+      <tr class="subtotal">
+        <td colspan="5" style="text-align:right; padding-right: 8px;">Physician Subtotal</td>
+        <td class="amount">$798.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Anesthesia Charges -->
+  <div class="section-header">Anesthesia Charges — Midwest Anesthesia Partners, LLC (OUT-OF-NETWORK)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:90px">Date</th>
+        <th style="width:90px">CPT Code</th>
+        <th>Description</th>
+        <th class="right" style="width:90px">Billed</th>
+        <th class="right" style="width:90px">Ins. Paid</th>
+        <th class="right" style="width:100px">Your Portion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">00840</td>
+        <td class="desc">
+          Anesthesia – Intraabdominal procedures
+          <div class="note">⚠ Provider is OUT-OF-NETWORK. No prior written notice provided to patient per facility records.</div>
+        </td>
+        <td class="amount">$2,840.00</td>
+        <td class="amount">$890.00</td>
+        <td class="amount">$1,950.00</td>
+      </tr>
+      <tr class="subtotal">
+        <td colspan="5" style="text-align:right; padding-right: 8px;">Anesthesia Subtotal</td>
+        <td class="amount">$1,950.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Facility / Lab Charges -->
+  <div class="section-header">Facility &amp; Laboratory Charges</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:90px">Date</th>
+        <th style="width:90px">CPT / Rev Code</th>
+        <th>Description</th>
+        <th class="right" style="width:90px">Billed</th>
+        <th class="right" style="width:90px">Ins. Paid</th>
+        <th class="right" style="width:100px">Your Portion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">80053</td>
+        <td class="desc">Comprehensive Metabolic Panel (14 tests)</td>
+        <td class="amount">$410.00</td>
+        <td class="amount">$328.00</td>
+        <td class="amount">$82.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">82310</td>
+        <td class="desc">
+          Calcium, total (serum)
+          <div class="note">⚠ Included in CMP panel above (CPT 80053)</div>
+        </td>
+        <td class="amount">$74.00</td>
+        <td class="amount">$0.00</td>
+        <td class="amount">$74.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">82947</td>
+        <td class="desc">
+          Glucose, quantitative (serum)
+          <div class="note">⚠ Included in CMP panel above (CPT 80053)</div>
+        </td>
+        <td class="amount">$68.00</td>
+        <td class="amount">$0.00</td>
+        <td class="amount">$68.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">85025</td>
+        <td class="desc">Complete Blood Count with differential</td>
+        <td class="amount">$185.00</td>
+        <td class="amount">$148.00</td>
+        <td class="amount">$37.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">85025</td>
+        <td class="desc">
+          Complete Blood Count with differential
+          <div class="note">⚠ Duplicate — same code, same date as line above</div>
+        </td>
+        <td class="amount">$185.00</td>
+        <td class="amount">$0.00</td>
+        <td class="amount">$185.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">REV-270</td>
+        <td class="desc">
+          Miscellaneous Medical/Surgical Supplies
+          <div class="note">No itemized detail available</div>
+        </td>
+        <td class="amount">$640.00</td>
+        <td class="amount">$320.00</td>
+        <td class="amount">$320.00</td>
+      </tr>
+      <tr>
+        <td>04/14/2026</td>
+        <td class="code">G0463</td>
+        <td class="desc">Hospital Outpatient Clinic Visit – Facility Fee</td>
+        <td class="amount">$420.00</td>
+        <td class="amount">$336.00</td>
+        <td class="amount">$84.00</td>
+      </tr>
+      <tr class="subtotal">
+        <td colspan="5" style="text-align:right; padding-right: 8px;">Facility &amp; Lab Subtotal</td>
+        <td class="amount">$850.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Summary -->
+  <div class="summary-row">
+    <div class="summary-box">
+      <div class="summary-line">
+        <span class="label">Total Billed</span>
+        <span class="val">$8,321.00</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Insurance Payments</span>
+        <span class="val">– $4,713.00</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Adjustments / Contractual</span>
+        <span class="val">– $10.00</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Previous Payments</span>
+        <span class="val">– $0.00</span>
+      </div>
+      <div class="summary-line total">
+        <span class="label">AMOUNT DUE</span>
+        <span class="val">$3,598.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Due Box -->
+  <div class="due-box">
+    <div class="due-label">Payment Due By</div>
+    <div class="due-amount">$3,598.00</div>
+    <div class="due-date">May 31, 2026 · Account RGH-2026-041192</div>
+  </div>
+
+  <!-- Notice -->
+  <div class="notice">
+    <strong>IMPORTANT:</strong> Failure to pay the amount due by May 31, 2026 may result in referral to a third-party collection agency and reporting to credit bureaus. If you have questions about your bill, contact Patient Financial Services at (217) 555-0199 or billing@riversidegeneral.org. Financial assistance programs may be available — ask for a Financial Counselor.
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>Riverside General Hospital · Patient Financial Services · 4400 Medical Center Blvd, Springfield, IL 62701<br>
+    Please make checks payable to Riverside General Hospital. Include account number on check.</div>
+    <div style="text-align:right">Page 1 of 1<br>Questions? (217) 555-0199</div>
+  </div>
+
+</div>
+</body>
+</html>

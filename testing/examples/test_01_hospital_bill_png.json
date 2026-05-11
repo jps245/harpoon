@@ -1,0 +1,47 @@
+{
+    "summary": "This is a medical bill that contains an illegal 'surprise' charge for out-of-network anesthesia and several other predatory billing errors, including duplicate and unbundled charges. The document is not legally sound because it admits to providing no prior notice for out-of-network care. The most important next step is to dispute the out-of-network anesthesia charge immediately.",
+    "document_type": "Medical Bill",
+    "category": "MEDICAL_BILL",
+    "red_flags": [
+        {
+            "what": "Out-of-network anesthesia charge without prior notice",
+            "why": "The bill explicitly states that no prior written notice was given for the out-of-network provider, which is a violation of federal law designed to protect patients from 'surprise' bills.",
+            "impact": "$1,950.00",
+            "category": "Illegal"
+        },
+        {
+            "what": "Duplicate charge for Complete Blood Count (CPT 85025)",
+            "why": "The same lab test is billed twice on the same day, and the bill even includes a note stating it is a duplicate.",
+            "impact": "$185.00",
+            "category": "Medium"
+        },
+        {
+            "what": "Unbundling of laboratory tests",
+            "why": "Calcium (82310) and Glucose (82947) were billed as separate charges, even though the bill notes they are already included in the Comprehensive Metabolic Panel (80053) that was also charged.",
+            "impact": "$142.00",
+            "category": "Medium"
+        },
+        {
+            "what": "Potential upcoding for Office Visit (CPT 99215)",
+            "why": "The provider billed a Level 5 visit, which is the highest and most expensive level of complexity, for an office visit associated with an appendectomy. This is often used to inflate costs when a lower-level code would be more appropriate.",
+            "impact": "$178.00",
+            "category": "Major"
+        },
+        {
+            "what": "Concurrent facility and physician fees",
+            "why": "The patient is being charged both a physician fee (99215) and a facility fee (G0463) for the same visit without prior disclosure, which is a predatory practice to increase the total bill.",
+            "impact": "$84.00",
+            "category": "Major"
+        }
+    ],
+    "your_rights": "Under the No Surprises Act (42 U.S.C. \u00a7 300gg-111), you are protected from surprise medical bills when you receive emergency care or certain non-emergency care from out-of-network providers at an in-network facility. You also have the right to request a fully itemized bill and to dispute any charges that appear duplicate or incorrect under state consumer protection laws.",
+    "action_steps": [
+        "Do not pay the bill in full until these discrepancies are resolved.",
+        "Call the Riverside General Hospital billing department and formally dispute the anesthesia charge, citing the No Surprises Act (42 U.S.C. \u00a7 300gg-111) and the bill's own admission that no prior notice was provided.",
+        "Demand the removal of the duplicate charge for the Complete Blood Count (CPT 85025) as noted on the statement.",
+        "Request a correction for 'unbundling' by removing the separate charges for Calcium and Glucose since they are already part of the Metabolic Panel.",
+        "Ask the billing department to provide the medical records used to justify the Level 5 (CPT 99215) coding for the office visit to ensure it was not upcoded."
+    ],
+    "urgency": "HIGH",
+    "caveat": "The red flag categorized as Illegal should be researched further or discussed with a legal professional before taking action, as specific laws and protections can vary by state and individual situation."
+}

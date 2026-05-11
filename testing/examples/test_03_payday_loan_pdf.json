@@ -1,0 +1,52 @@
+{
+    "summary": "This is a payday loan agreement with an extremely high interest rate and predatory renewal terms. It contains potentially illegal gaps in fee disclosures and forced insurance, and you should seek alternative financial options before signing.",
+    "document_type": "Loan Agreement & Disclosure",
+    "category": "CREDIT_AGREEMENT",
+    "red_flags": [
+        {
+            "what": "Extremely high Annual Percentage Rate (APR) of 391.07%",
+            "why": "An APR this high is considered predatory. It means the cost of borrowing is nearly four times the original loan amount over a year, making it very difficult to pay back.",
+            "impact": "391.07% APR",
+            "category": "Major"
+        },
+        {
+            "what": "Rollover and Renewal Terms",
+            "why": "The agreement allows you to 'renew' the loan by paying only the fees without reducing the $500 you borrowed. This creates a 'debt trap' where you pay hundreds of dollars in fees without ever paying off the original loan.",
+            "impact": "Example shows $380 in fees alone for 4 rollovers on a $500 loan",
+            "category": "Major"
+        },
+        {
+            "what": "Fees excluded from the Federal Truth in Lending Disclosure (TILA box)",
+            "why": "The Origination Fee ($25) and Verification Fee ($10) are listed outside the TILA box. Under federal law, the 'Finance Charge' must generally include all costs of credit. Hiding fees outside this box may be a violation of the Truth in Lending Act (TILA 15 U.S.C. \u00a7 1638).",
+            "impact": "$35.00 in undisclosed finance charges",
+            "category": "Illegal"
+        },
+        {
+            "what": "Forced 'Payment Protection' add-on",
+            "why": "The $18.00 charge for payment protection is 'automatically added' to your balance. Forced insurance or protection products that the borrower didn't specifically request are predatory.",
+            "impact": "$18.00",
+            "category": "Major"
+        },
+        {
+            "what": "Aggressive Returned Item Fees",
+            "why": "The lender can attempt to debit your account six additional times if the first one fails, charging $35 each time. This can quickly drain a bank account and lead to massive overdraft fees from your own bank.",
+            "impact": "Up to $210.00 in returned item fees (6 attempts x $35)",
+            "category": "Major"
+        },
+        {
+            "what": "Mandatory Arbitration Clause",
+            "why": "This forces you to give up your right to a jury trial or to join a class-action lawsuit if the company cheats you, forcing you into a private system that often favors the lender.",
+            "impact": "Loss of legal rights to sue in court",
+            "category": "Medium"
+        }
+    ],
+    "your_rights": "Under the Truth in Lending Act (TILA 15 U.S.C. \u00a7 1638), you have the right to a clear and accurate disclosure of the total cost of your credit, including all fees, expressed as an APR. You also have the right to cancel certain 'add-on' products within a specific window, as noted in the Payment Protection section of this document.",
+    "action_steps": [
+        "Do not sign this agreement. The combination of the 391% APR and rollover terms is designed to keep you in debt.",
+        "Look for a 'Payday Alternative Loan' (PAL) from a local credit union, which typically has much lower interest rates and fairer terms.",
+        "Contact a non-profit credit counseling agency to explore options for emergency financial assistance.",
+        "If you have already signed this and are struggling, submit a complaint to the Consumer Financial Protection Bureau (CFPB) regarding the fee disclosures and predatory terms."
+    ],
+    "urgency": "HIGH",
+    "urgency_reason": "This document contains multiple major predatory terms and a potential illegal failure to disclose all finance charges in the federal TILA box. Signing this could lead to a cycle of debt that is nearly impossible to escape."
+}

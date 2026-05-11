@@ -1,0 +1,13 @@
+{
+    "summary": "This is a standard debt collection letter for $834.00. It includes all legally required disclosures and appears to be legally sound; the most important next step is to verify your records to ensure this debt is accurate before making any payments.",
+    "document_type": "Debt Collection Letter",
+    "category": "DEBT_COLLECTION",
+    "red_flags": [],
+    "your_rights": "Under the Fair Debt Collection Practices Act (FDCPA), you have the right to dispute the validity of this debt in writing within 30 days of receiving this notice. You also have the right to request 'verification' of the debt\u2014which means the collector must provide proof that you owe the money\u2014and the right to request the name and address of the original creditor.",
+    "action_steps": [
+        "1. Review your own financial records to see if you recognize this debt and the amount of $834.00.",
+        "2. If you do not recognize the debt or believe the amount is wrong, send a written dispute letter to the agency within 30 days to request formal verification of the debt.",
+        "3. If you decide to pay, request a written agreement stating that the payment will fully satisfy the debt before sending any money."
+    ],
+    "urgency": "LOW"
+}

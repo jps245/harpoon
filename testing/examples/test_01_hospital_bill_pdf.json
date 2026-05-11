@@ -1,0 +1,47 @@
+{
+    "summary": "This is a medical bill containing illegal out-of-network charges and several billing errors including duplicate and overlapping charges. The document is not legally sound due to a violation of the No Surprises Act, and the most important next step is to dispute the out-of-network anesthesia charge before paying anything.",
+    "document_type": "Medical Bill",
+    "category": "MEDICAL_BILL",
+    "red_flags": [
+        {
+            "what": "Out-of-network anesthesia charge without prior written notice",
+            "why": "Under the No Surprises Act, patients cannot be charged out-of-network rates for emergency services or certain non-emergency services at in-network facilities unless they are given a written notice and consent form in advance.",
+            "impact": "$1,950.00",
+            "category": "Illegal"
+        },
+        {
+            "what": "Duplicate charge for Complete Blood Count (CPT 85025)",
+            "why": "The same test was billed twice on the same day, which is a billing error.",
+            "impact": "$185.00",
+            "category": "Medium"
+        },
+        {
+            "what": "Unbundling of lab tests (CPT 82310 and 82947)",
+            "why": "Unbundling occurs when a provider bills for individual components of a test separately when they are already included in a single 'panel' or bundle (in this case, the Comprehensive Metabolic Panel CPT 80053).",
+            "impact": "$142.00",
+            "category": "Medium"
+        },
+        {
+            "what": "Potential Upcoding (CPT 99215)",
+            "why": "The provider billed for a Level 5 visit, the highest and most expensive complexity level. If the visit was actually a routine follow-up rather than a high-complexity encounter, this is an overcharge.",
+            "impact": "$178.00",
+            "category": "Major"
+        },
+        {
+            "what": "Unitemized medical supplies (REV-270)",
+            "why": "The bill charges for miscellaneous supplies without providing a list of what was actually used, making it impossible to verify if the costs are inflated.",
+            "impact": "$320.00",
+            "category": "Minor"
+        }
+    ],
+    "your_rights": "You are protected by the No Surprises Act (42 U.S.C. \u00a7 300gg-111), which prohibits 'surprise' bills from out-of-network providers at in-network facilities. You also have the right to request a fully itemized bill to verify every single charge and dispute any errors or duplicates with the provider's billing department and your insurance company.",
+    "action_steps": [
+        "Do not pay the $3,598.00 balance yet, as it contains several errors and an illegal charge.",
+        "Call the hospital billing department and formally dispute the anesthesia charge, citing the No Surprises Act and the note on the bill stating no prior written notice was provided.",
+        "Contact your insurance company to report the duplicate CPT 85025 charge and the unbundled CPT 82310 and 82947 charges to have them removed from the claim.",
+        "Request a detailed, itemized list for the 'Miscellaneous Medical/Surgical Supplies' (REV-270) to ensure you aren't being overcharged for basic items.",
+        "Ask the doctor's office for the medical documentation that justifies the 'Level 5' complexity for the visit (CPT 99215) to ensure you weren't upcoded."
+    ],
+    "urgency": "HIGH",
+    "caveat": "The red flag categorized as Illegal regarding the No Surprises Act should be researched further or discussed with a consumer advocate or legal professional, as specific laws and protections can vary by state and situation."
+}
