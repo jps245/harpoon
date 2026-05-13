@@ -60,27 +60,32 @@ async def find_alternatives(loan_details: dict) -> dict:
 @app.post("/analyze")
 async def analyze_document(file: UploadFile = File(...)):
     contents = await file.read()
+    try:
+        # existing logic
+        response = client.models.generate_content(
+            model="gemma-4-31b-it",
+            contents=[
+                types.Part.from_bytes(data=contents, mime_type=file.content_type),
+                SYSTEM_PROMPT
+            ]
+        )
 
-    response = client.models.generate_content(
-        model="gemma-4-31b-it",
-        contents=[
-            types.Part.from_bytes(data=contents, mime_type=file.content_type),
-            SYSTEM_PROMPT
-        ]
-    )
+        result_text = response.text.strip()
+        if result_text.startswith("```json"):
+            result_text = result_text[7:]
+        if result_text.endswith("```"):
+            result_text = result_text[:-3]
+        result_text = result_text.strip()
 
-    result_text = response.text.strip()
-    if result_text.startswith("```json"):
-        result_text = result_text[7:]
-    if result_text.endswith("```"):
-        result_text = result_text[:-3]
-    result_text = result_text.strip()
+        parsed = json.loads(result_text)
 
-    parsed = json.loads(result_text)
+        if parsed.get("category") == "CREDIT_AGREEMENT" and parsed.get("loan_details"):
+            parsed["alternatives"] = await find_alternatives(parsed["loan_details"])
+        else:
+            parsed["alternatives"] = None
+        return parsed
 
-    if parsed.get("category") == "CREDIT_AGREEMENT" and parsed.get("loan_details"):
-        parsed["alternatives"] = await find_alternatives(parsed["loan_details"])
-    else:
-        parsed["alternatives"] = None
+    finally:
+        del contents  # explicit memory cleanup
 
-    return parsed
+
