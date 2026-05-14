@@ -5,8 +5,7 @@ export const metadata = {
   description: "Protect yourself from predatory financial practices. Upload any financial document and Harpoon will identify red flags, explain your rights, and find you better options.",
 };
 
-export default function RootLayout({ children }) {
-  return (
+export default function RootLayout({ children }: { children: React.ReactNode }) {  return (
     <html lang="en">
       <body>{children}</body>
     </html>
