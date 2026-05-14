@@ -146,7 +146,7 @@ export default function Home() {
               lineHeight: 1.1,
               marginBottom: 16,
             }}>
-              Reel It In!<br />
+              Welcome to Harpoon<br />
             </h1>
             <p style={{
               fontSize: 18,
@@ -155,7 +155,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6,
             }}>
-              Welcome to HARPOON, your app for catching sharks.  Upload any financial document — loan agreement, medical bill, debt collection letter — and Harpoon will tell you exactly what to watch out for and give you next steps.  Your bigger boat is here.
+              The app for catching sharks.  Upload any financial document — loan agreement, medical bill, debt collection letter — and Harpoon will tell you exactly what to watch out for and give you next steps.  Your bigger boat is here.
             </p>
           </div>
         )}
