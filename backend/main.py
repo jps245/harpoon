@@ -1,4 +1,5 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form
+from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
 from google import genai
 from google.genai import types
@@ -6,10 +7,20 @@ from tavily import TavilyClient
 from dotenv import load_dotenv
 import os
 import json
+import re
+
 
 from prompts.analysis_prompt import SYSTEM_PROMPT
 
 load_dotenv()
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+logger.info("Starting up...")
+logger.info(f"GOOGLE_API_KEY set: {bool(os.getenv('GOOGLE_API_KEY'))}")
+logger.info(f"TAVILY_API_KEY set: {bool(os.getenv('TAVILY_API_KEY'))}")
 
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
@@ -18,10 +29,18 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://www.harpoon.online",
+        "https://harpoon.online",
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
 
 async def find_alternatives(loan_details: dict) -> dict:
     loan_type = loan_details.get("loan_type", "personal loan")
@@ -57,18 +76,74 @@ async def find_alternatives(loan_details: dict) -> dict:
         print(f"Tavily search failed: {e}")
         return {}
 
+# ── PII stripping (mirrors the JS version) ──────────────────────────────────
+PII_PATTERNS = [
+    (r'\b\d{3}[-\s]\d{2}[-\s]\d{4}\b|\b\d{9}\b(?=\s|$)',          'REDACTED_SSN'),
+    (r'\b[A-Z0-9]{4}[-\s]?[A-Z0-9]{3}[-\s]?[A-Z0-9]{4}\b',        'REDACTED_MEDICARE_ID'),
+    (r'\b(?:Member|Policy|Group|Subscriber)\s*(?:#|No\.?|ID)?\s*[A-Z0-9]{6,15}\b', 'REDACTED_INSURANCE_ID'),
+    (r'\b(?:Account|Patient|Acct|Claim|Invoice|Bill)\s*(?:#|No\.?|Number|Num)?\s*[A-Z0-9\-]{4,20}\b', 'REDACTED_ACCOUNT_NUM'),
+    (r'\b(?:DOB|Date of Birth|Birthdate|Birth Date)[:\s]*\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}\b', 'REDACTED_DOB'),
+    (r'\b\d{1,2}[\/\-]\d{1,2}[\/\-]\d{4}\b',                       'REDACTED_DATE'),
+    (r'(?:\+1[\s\-]?)?\(?\d{3}\)?[\s\-\.]\d{3}[\s\-\.]\d{4}\b',    'REDACTED_PHONE'),
+    (r'\b[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}\b',      'REDACTED_EMAIL'),
+    (r'\b\d{1,5}\s+(?:[A-Z][a-z]+\s){1,4}(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr|Lane|Ln|Court|Ct|Way|Place|Pl|Parkway|Pkwy)\.?\b', 'REDACTED_ADDRESS'),
+    (r'\b\d{5}(?:-\d{4})?\b',                                        'REDACTED_ZIP'),
+    (r'\b(?:Patient|Name|Guarantor|Insured|Subscriber)[:\s]+[A-Z][a-z]+(?:\s+[A-Z]\.?)?\s+[A-Z][a-z]+\b', 'REDACTED_NAME'),
+    (r'\b(?:\d{4}[-\s]?){3}\d{4}\b',                                 'REDACTED_CREDIT_CARD'),
+    (r'\b(?:NPI)[:\s#]*\d{10}\b',                                    'REDACTED_NPI'),
+]
+
+def strip_pii(text: str) -> tuple[str, int]:
+    count = 0
+    for pattern, replacement in PII_PATTERNS:
+        matches = re.findall(pattern, text, flags=re.IGNORECASE)
+        count += len(matches)
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    return text, count
+
+IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
+
+
 @app.post("/analyze")
-async def analyze_document(file: UploadFile = File(...)):
+async def analyze_document(
+    file: UploadFile = File(...),
+    cleanedText: Optional[str] = Form(None)   # ← add this
+):
     contents = await file.read()
     try:
-        # existing logic
-        response = client.models.generate_content(
-            model="gemma-4-31b-it",
-            contents=[
-                types.Part.from_bytes(data=contents, mime_type=file.content_type),
-                SYSTEM_PROMPT
-            ]
-        )
+        if file.content_type in IMAGE_TYPES:
+            # Image: OCR → strip PII → analyze clean text
+            ocr_response = client.models.generate_content(
+                model="gemma-4-31b-it",
+                contents=[
+                    types.Part.from_bytes(data=contents, mime_type=file.content_type),
+                    "Extract all text from this document exactly as it appears. Return only the raw text, no commentary."
+                ]
+            )
+            extracted_text = ocr_response.text.strip()
+            clean_text, redaction_count = strip_pii(extracted_text)
+
+            response = client.models.generate_content(
+                model="gemma-4-31b-it",
+                contents=[clean_text, SYSTEM_PROMPT]
+            )
+
+        elif cleanedText:
+            # PDF/text: frontend already stripped PII, use that
+            redaction_count = None
+            response = client.models.generate_content(
+                model="gemma-4-31b-it",
+                contents=[cleanedText, SYSTEM_PROMPT]
+            )
+
+        else:
+            # Fallback: no cleaned text provided, strip on backend
+            raw_text = contents.decode("utf-8", errors="ignore")
+            clean_text, redaction_count = strip_pii(raw_text)
+            response = client.models.generate_content(
+                model="gemma-4-31b-it",
+                contents=[clean_text, SYSTEM_PROMPT]
+            )
 
         result_text = response.text.strip()
         if result_text.startswith("```json"):
@@ -83,9 +158,14 @@ async def analyze_document(file: UploadFile = File(...)):
             parsed["alternatives"] = await find_alternatives(parsed["loan_details"])
         else:
             parsed["alternatives"] = None
+
+        parsed["redaction_count"] = redaction_count
         return parsed
 
+    except Exception as e:
+        import traceback
+        print(f"Full error: {traceback.format_exc()}")
+        raise
+
     finally:
-        del contents  # explicit memory cleanup
-
-
+        del contents

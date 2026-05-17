@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { stripPIIWithSummary } from "./stripPII";
 
 const SEVERITY_CONFIG = {
   Minor: { color: "#3b82f6", bg: "rgba(59,130,246,0.1)", border: "rgba(59,130,246,0.3)" },
@@ -46,12 +47,17 @@ export default function Home() {
     setLoading(true);
     setError(null);
     setResult(null);
-
-    const formData = new FormData();
-    formData.append("file", file);
-
+  
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analyze`, { 
+      // Extract text from file, strip PII, then send clean text
+      const rawText = await file.text();
+      const { cleanedText, redactionSummary } = stripPIIWithSummary(rawText);
+  
+      const formData = new FormData();
+      formData.append("file", file);           // still send file for image analysis
+      formData.append("cleanedText", cleanedText); // send stripped text separately
+  
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analyze`, {
         method: "POST",
         body: formData,
       });
@@ -155,7 +161,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6,
             }}>
-              The app for catching sharks.  Upload any financial document — loan agreement, medical bill, debt collection letter — and Harpoon will tell you exactly what to watch out for and give you next steps.  Your bigger boat is here.
+              The app for catching sharks.  Upload any financial document — loan agreement, medical bill, debt collection letter — and Harpoon will tell you exactly what to watch out for and give you next steps.
             </p>
           </div>
         )}
@@ -357,6 +363,22 @@ export default function Home() {
               </span>
             </div>
 
+            {result.redaction_count > 0 && (
+
+            {/* PII Removal Report */}
+            <div className="animate-fade-in-up" style={{
+                padding: "10px 16px",
+                background: "rgba(16,185,129,0.05)",
+                border: "1px solid rgba(16,185,129,0.2)",
+                fontSize: 12,
+                color: "var(--accent-green)",
+                fontFamily: "Space Mono, monospace",
+                letterSpacing: "0.08em",
+              }}>
+                ✓ {result.redaction_count} PERSONAL FIELDS REMOVED BEFORE PROCESSING
+              </div>
+            )}
+
             {/* Summary */}
             <div className="animate-fade-in-up" style={{
               padding: "24px",
@@ -370,6 +392,31 @@ export default function Home() {
                 {result.summary}
               </p>
             </div>
+
+            {/* Total Impact */}
+            {result.red_flags && result.red_flags.length > 0 && (() => {
+              const total = result.red_flags.reduce((sum: number, flag: any) => {
+                const match = flag.impact?.match(/\$([0-9,]+)/);
+                return sum + (match ? parseFloat(match[1].replace(/,/g, '')) : 0);
+              }, 0);
+              return total > 0 ? (
+                <div className="animate-fade-in-up" style={{
+                  padding: "20px 24px",
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border)",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}>
+                  <span className="mono" style={{ fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.15em" }}>
+                    TOTAL POTENTIAL OVERCHARGES
+                  </span>
+                  <span className="mono" style={{ fontSize: 22, fontWeight: 700, color: "var(--accent-red)" }}>
+                    ${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </span>
+                </div>
+              ) : null;
+            })()}
 
             {/* Loan Details */}
             {result.loan_details && (
