@@ -105,7 +105,8 @@ export default function Home() {
             <path d="M24 12 L19 14 L22 17" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
             {/* Rope coil at base */}
             <path d="M6 30 Q4 28 7 26 Q10 24 8 22" stroke="#f59e0b" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
-          </svg>          <span style={{
+          </svg>          
+          <span style={{
             fontSize: 22,
             fontWeight: 800,
             letterSpacing: "-0.02em",
@@ -366,7 +367,8 @@ export default function Home() {
             {result.redaction_count > 0 && (
 
             {/* PII Removal Report */}
-            <div className="animate-fade-in-up" style={{
+            {result.redaction_count > 0 && (
+              <div className="animate-fade-in-up" style={{
                 padding: "10px 16px",
                 background: "rgba(16,185,129,0.05)",
                 border: "1px solid rgba(16,185,129,0.2)",
