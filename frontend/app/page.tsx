@@ -162,7 +162,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6,
             }}>
-              The app for catching sharks.  Upload any financial document — loan agreement, medical bill, debt collection letter — and Harpoon will tell you exactly what to watch out for and give you next steps.
+              The app for catching sharks.  Upload any financial document — loan agreement, medical bill, debt collection letter — and Harpoon will find the red flags.
             </p>
           </div>
         )}
