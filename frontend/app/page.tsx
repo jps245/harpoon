@@ -364,8 +364,6 @@ export default function Home() {
               </span>
             </div>
 
-            {result.redaction_count > 0 && (
-
             {/* PII Removal Report */}
             {result.redaction_count > 0 && (
               <div className="animate-fade-in-up" style={{
