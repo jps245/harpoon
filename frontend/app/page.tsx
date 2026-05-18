@@ -57,6 +57,7 @@ export default function Home() {
       formData.append("file", file);           // still send file for image analysis
       formData.append("cleanedText", cleanedText); // send stripped text separately
   
+      console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analyze`, {
         method: "POST",
         body: formData,
