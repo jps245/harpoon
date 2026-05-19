@@ -112,15 +112,18 @@ async def analyze_document(
     contents = await file.read()
     try:
         if file.content_type in IMAGE_TYPES:
+
             # Image: OCR → strip PII → analyze clean text
             ocr_response = client.models.generate_content(
-                model="gemma-4-31b-it",
+                model="gemini-3-flash-preview",
                 contents=[
                     types.Part.from_bytes(data=contents, mime_type=file.content_type),
                     "Extract all text from this document exactly as it appears. Return only the raw text, no commentary."
                 ]
             )
+            
             extracted_text = ocr_response.text.strip()
+            logger.info(f"OCR output length: {len(extracted_text)} chars")
             clean_text, redaction_count = strip_pii(extracted_text)
 
             response = client.models.generate_content(
