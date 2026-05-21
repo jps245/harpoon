@@ -102,7 +102,9 @@ def strip_pii(text: str) -> tuple[str, int]:
     return text, count
 
 IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
-
+LARGE_LLM = "gemini-3-flash-preview"
+CONTEST_LLM = "gemma-4-31b-it"
+CONTEST_MODE = True
 
 @app.post("/analyze")
 async def analyze_document(
@@ -115,27 +117,33 @@ async def analyze_document(
 
             # Image: OCR → strip PII → analyze clean text
             ocr_response = client.models.generate_content(
-                model="gemini-3-flash-preview",
+                model=LARGE_LLM,
                 contents=[
                     types.Part.from_bytes(data=contents, mime_type=file.content_type),
                     "Extract all text from this document exactly as it appears. Return only the raw text, no commentary."
                 ]
             )
-            
+
             extracted_text = ocr_response.text.strip()
             logger.info(f"OCR output length: {len(extracted_text)} chars")
             clean_text, redaction_count = strip_pii(extracted_text)
 
+            if CONTEST_MODE:
+                llm = CONTEST_LLM
+            else:
+                llm = LARGE_LLM
+
             response = client.models.generate_content(
-                model="gemma-4-31b-it",
+                model=llm,
                 contents=[clean_text, SYSTEM_PROMPT]
             )
 
         elif cleanedText:
+            print(f"cleanedText length: {len(cleanedText)} chars")
             # PDF/text: frontend already stripped PII, use that
             redaction_count = None
             response = client.models.generate_content(
-                model="gemma-4-31b-it",
+                model=LARGE_LLM,
                 contents=[cleanedText, SYSTEM_PROMPT]
             )
 
