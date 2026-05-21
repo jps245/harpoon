@@ -266,7 +266,7 @@ export default function Home() {
                     Drop your document here or <span style={{ color: "var(--accent-amber)", textDecoration: "underline" }}>browse</span>
                   </p>
                   <p className="mono" style={{ color: "var(--text-dim)", fontSize: 12, letterSpacing: "0.1em" }}>
-                    JPG · PNG · PDF · WEBP
+                    JPG · PNG · WEBP · PDF
                   </p>
                 </div>
               )}
