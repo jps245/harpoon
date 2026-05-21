@@ -36,7 +36,7 @@ Most resources available to consumers in financial distress are either paywalled
 |---|---|
 | Frontend | Next.js (TypeScript) |
 | Backend | FastAPI (Python) |
-| AI | Google Gemma 4 (multimodal) |
+| AI | Google Gemma 4 (multimodal) for pics, Google Gemini 3 for pdfs|
 | Hosting — Frontend | AWS Amplify |
 | Hosting — Backend | AWS ECS Fargate |
 | Load Balancer | AWS ALB |
