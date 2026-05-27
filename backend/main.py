@@ -8,6 +8,9 @@ from dotenv import load_dotenv
 import os
 import json
 import re
+import magic
+import pdfplumber
+import io
 
 
 from prompts.analysis_prompt import SYSTEM_PROMPT
@@ -101,61 +104,99 @@ def strip_pii(text: str) -> tuple[str, int]:
         text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
     return text, count
 
-IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
 LARGE_LLM = "gemini-3-flash-preview"
 CONTEST_LLM = "gemma-4-31b-it"
-CONTEST_MODE = True
+
+IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
+PDF_TYPES = {"application/pdf"}
+CONTEST_MODE = True  # fixed typo
+
+def detect_content_type(contents: bytes, declared: str) -> str:
+    """Use file magic bytes to detect true content type, ignoring what the browser claims."""
+    try:
+        detected = magic.from_buffer(contents, mime=True)
+        return detected
+    except Exception:
+        return declared  # fall back to declared if magic fails
 
 @app.post("/analyze")
 async def analyze_document(
     file: UploadFile = File(...),
-    cleanedText: Optional[str] = Form(None)   # ← add this
+    cleanedText: Optional[str] = Form(None)
 ):
+    logger.info(f"Received file: name={file.filename}, declared_type={file.content_type}, size={file.size}")
+    logger.info(f"cleanedText present: {cleanedText is not None}, length: {len(cleanedText) if cleanedText else 0}")
+    
     contents = await file.read()
-    try:
-        if file.content_type in IMAGE_TYPES:
+    logger.info(f"Read {len(contents)} bytes from upload")
+    
+    # Detect true content type from file bytes, not browser header
+    true_content_type = detect_content_type(contents, file.content_type)
+    logger.info(f"Declared content_type: {file.content_type} | Detected: {true_content_type}")
 
-            # Image: OCR → strip PII → analyze clean text
+    try:
+        if true_content_type in IMAGE_TYPES:
             ocr_response = client.models.generate_content(
                 model=LARGE_LLM,
                 contents=[
-                    types.Part.from_bytes(data=contents, mime_type=file.content_type),
+                    types.Part.from_bytes(data=contents, mime_type=true_content_type),
                     "Extract all text from this document exactly as it appears. Return only the raw text, no commentary."
                 ]
             )
-
             extracted_text = ocr_response.text.strip()
             logger.info(f"OCR output length: {len(extracted_text)} chars")
             clean_text, redaction_count = strip_pii(extracted_text)
 
-            if CONTEST_MODE:
-                llm = CONTEST_LLM
-            else:
-                llm = LARGE_LLM
-
+            llm = CONTEST_LLM if CONTEST_MODE else LARGE_LLM
             response = client.models.generate_content(
                 model=llm,
                 contents=[clean_text, SYSTEM_PROMPT]
             )
 
         elif cleanedText:
-            print(f"cleanedText length: {len(cleanedText)} chars")
-            # PDF/text: frontend already stripped PII, use that
+            logger.info(f"cleanedText length: {len(cleanedText)} chars")
             redaction_count = None
             response = client.models.generate_content(
                 model=LARGE_LLM,
                 contents=[cleanedText, SYSTEM_PROMPT]
             )
 
-        else:
-            # Fallback: no cleaned text provided, strip on backend
-            raw_text = contents.decode("utf-8", errors="ignore")
+        elif true_content_type in PDF_TYPES:
+            # No cleanedText (likely iOS/Safari) — extract text server-side
+            
+            try:
+                with pdfplumber.open(io.BytesIO(contents)) as pdf:
+                    raw_text = "\n".join(
+                        page.extract_text() or "" for page in pdf.pages
+                    )
+            except Exception as e:
+                raise HTTPException(status_code=400, detail=f"Could not extract text from PDF: {str(e)}")
+            
+            if not raw_text.strip():
+                raise HTTPException(status_code=400, detail="PDF appears to be scanned or image-based. Please upload a photo of the document instead.")
+            
             clean_text, redaction_count = strip_pii(raw_text)
             response = client.models.generate_content(
-                model="gemma-4-31b-it",
+                model=LARGE_LLM,
                 contents=[clean_text, SYSTEM_PROMPT]
             )
 
+        else:
+            # Plain text fallback
+            try:
+                raw_text = contents.decode("utf-8", errors="strict")
+            except UnicodeDecodeError:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Unsupported file type: {true_content_type}. Please upload a PDF, image, or text file."
+                )
+            clean_text, redaction_count = strip_pii(raw_text)
+            response = client.models.generate_content(
+                model=LARGE_LLM,
+                contents=[clean_text, SYSTEM_PROMPT]
+            )
+
+        # ... rest of your parsing logic unchanged
         result_text = response.text.strip()
         if result_text.startswith("```json"):
             result_text = result_text[7:]

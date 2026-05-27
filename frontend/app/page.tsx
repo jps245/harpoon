@@ -43,21 +43,28 @@ export default function Home() {
   };
 
   const handleAnalyze = async () => {
+    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
     if (!file) return;
     setLoading(true);
     setError(null);
     setResult(null);
   
     try {
-      // Extract text from file, strip PII, then send clean text
-      const rawText = await file.text();
-      const { cleanedText, redactionSummary } = stripPIIWithSummary(rawText);
-  
       const formData = new FormData();
-      formData.append("file", file);           // still send file for image analysis
-      formData.append("cleanedText", cleanedText); // send stripped text separately
+      formData.append("file", file);
   
-      console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+      // Only extract/strip text for non-binary files
+      const isTextBased = file.type === "text/plain" || 
+                          file.name.endsWith(".txt");
+      
+      if (isTextBased) {
+        const rawText = await file.text();
+        const { cleanedText } = stripPIIWithSummary(rawText);
+        formData.append("cleanedText", cleanedText);
+      }
+      // For PDF and images: backend handles extraction server-side,
+      // no cleanedText needed
+  
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analyze`, {
         method: "POST",
         body: formData,
