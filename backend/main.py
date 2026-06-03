@@ -14,6 +14,7 @@ import io
 
 
 from prompts.analysis_prompt import SYSTEM_PROMPT
+from fastapi.responses import JSONResponse
 
 load_dotenv()
 
@@ -109,7 +110,7 @@ CONTEST_LLM = "gemma-4-31b-it"
 
 IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
 PDF_TYPES = {"application/pdf"}
-CONTEST_MODE = True  # fixed typo
+CONTEST_MODE = False  # fixed typo
 
 def detect_content_type(contents: bytes, declared: str) -> str:
     """Use file magic bytes to detect true content type, ignoring what the browser claims."""
@@ -162,25 +163,32 @@ async def analyze_document(
             )
 
         elif true_content_type in PDF_TYPES:
-            # No cleanedText (likely iOS/Safari) — extract text server-side
-            
             try:
                 with pdfplumber.open(io.BytesIO(contents)) as pdf:
                     raw_text = "\n".join(
                         page.extract_text() or "" for page in pdf.pages
                     )
             except Exception as e:
-                raise HTTPException(status_code=400, detail=f"Could not extract text from PDF: {str(e)}")
-            
+                raise HTTPException(status_code=400, detail=f"Could not open PDF: {str(e)}")
+
             if not raw_text.strip():
-                raise HTTPException(status_code=400, detail="PDF appears to be scanned or image-based. Please upload a photo of the document instead.")
-            
+                # Scanned PDF — fall back to Gemini vision OCR
+                logger.info("Scanned PDF detected, falling back to OCR")
+                ocr_response = client.models.generate_content(
+                    model=LARGE_LLM,
+                    contents=[
+                        types.Part.from_bytes(data=contents, mime_type="application/pdf"),
+                        "Extract all text from this document exactly as it appears. Return only the raw text, no commentary."
+                    ]
+                )
+                raw_text = ocr_response.text.strip()
+
             clean_text, redaction_count = strip_pii(raw_text)
             response = client.models.generate_content(
                 model=LARGE_LLM,
                 contents=[clean_text, SYSTEM_PROMPT]
             )
-
+            
         else:
             # Plain text fallback
             try:
@@ -212,7 +220,10 @@ async def analyze_document(
             parsed["alternatives"] = None
 
         parsed["redaction_count"] = redaction_count
-        return parsed
+        return JSONResponse(
+            content=parsed,
+            headers={"Cache-Control": "no-store, no-cache, must-revalidate"}
+        )
 
     except Exception as e:
         import traceback
